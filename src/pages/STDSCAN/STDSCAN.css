@@ -1,0 +1,24 @@
+.no-support{
+    margin-top: 5%;
+}
+
+.titre-scan{
+    width: 40%;
+}
+
+.toolbar{
+    color: 'black';
+    margin-top: 3%;
+    align-content: center;
+}
+
+.search-bar{
+    width: 60%;
+  }
+  
+
+@media screen and (max-width: 1024px) {
+    .titre-scan{
+        width: 95%;
+    }
+}

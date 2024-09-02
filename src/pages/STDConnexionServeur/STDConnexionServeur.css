@@ -1,0 +1,50 @@
+
+.ConnexionPage{
+    background-image: url("../../assets/TM_FondComplet.png");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.ConnexionPage .titre-bienvenue{
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.logo{
+    width: 30%;
+}
+
+.inoky-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%; 
+    color: rgba(187, 187, 187, 0.613);
+  }
+
+.url-text-container{
+    color: rgba(187, 187, 187, 0.613);
+    font-weight: bold;
+}
+
+.error-badurl{
+    color: red;
+}
+
+@media screen and (max-width: 1024px) {
+    .logo{
+        display: none;
+    }
+    .ConnexionPage .titre-bienvenue{
+        padding-top: 20%;
+        margin-top: auto;
+        color: white;
+        font-size: x-large;
+        font-weight: bold;
+    }
+
+    .inoky-container{
+        font-size: x-small;
+    }
+}

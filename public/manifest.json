@@ -1,0 +1,39 @@
+{
+  "short_name": "Track Mobile Viewer",
+  "name": "Progressive Web App Track Mobile Viewer",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "IconeTM-Viewer-HD.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "IconeTM-Viewer-HD.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Scan",
+      "short_name": "Scan Capture",
+      "description": "Scan QRCode",
+      "url": "/",
+      "icons": [
+        {
+          "src": "IconeTM-Viewer-HD.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
