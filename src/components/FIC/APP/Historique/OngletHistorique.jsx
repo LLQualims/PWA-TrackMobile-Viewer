@@ -18,10 +18,10 @@ const HistoriqueList = (props) => {
       try {
         const response = await axios.get(`${localStorage.getItem('URLServeur')}/app/appareil/${props.id}/historique`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('Token')}`
+            Authorization: `Bearer ${localStorage.getItem('Token')}`,
+            SousEntites: '1'
           }
         });
-        // Vérifiez si la propriété 'contenu' est un tableau
         if (Array.isArray(response.data.contenu)) {
           setData(response.data.contenu);
         } else {
@@ -47,17 +47,39 @@ const HistoriqueList = (props) => {
     return <div>Error: {error.message}</div>;
   }
 
+  
+    const getImageOperation = (idappNatureOperation, nomImage) => {
+      let img = nomImage;
+      
+      switch(idappNatureOperation) {
+        case 1: case 2:
+          return require('../../../../assets/Images/APP_Acquisition-128-1.png');
+        case 90: case 98:
+          return require('../../../../assets/Images/APP_Derogation-128-1.png');
+        case 94:
+          return require('../../../../assets/Images/APP_MiseHorsService-128-1.png');
+        case 95:
+          return require('../../../../assets/Images/APP_RemiseEnService-128-1.png');
+        case 96:
+          return require('../../../../assets/Images/APP_MiseEnReserve-128-1.png');
+        case 97:
+          return require('../../../../assets/Images/APP_MiseAuRebut-128-1.png');
+        default:
+          return require(`../../../../assets/Images/${img.replace("XX-X.XXX", "128-1.png")}`);
+      }
+
+      return
+    };
+
   return (
     <div className='tabAPP'>
       <ul className='list'>
         {data.map((item) => (
            <button key={item.idappOperation}  className='list-item-button' type="button">
-           <img src={require(`../../../../assets/Images/APP_MiseAuRebut-128-1.png`)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
+           <img src={getImageOperation(item.idappNatureOperation,item.appNatureOperation.nomImage)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
            <div className='contenu'>
-             <p>{item.idappOperation}</p>
-             <p>{item.heureOperation}</p>
-             <p>{item.dateOperation}</p>
-             <p>{item.nomIntervenant}</p>
+           <p className='natureoperation'>{item.appNatureOperation.designationNatureOperation}</p>
+           <p className='dateoperation'>{item.dateOperation} {item.heureOperation}</p>
            </div>
          </button>
         ))}
