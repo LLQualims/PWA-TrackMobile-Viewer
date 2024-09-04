@@ -46,6 +46,7 @@ const ScanPage = () => {
     event.preventDefault();
 
     VerifNumAppareil();
+    VerifIDAppareil();
     VerifNumConditionnement();
   };
 
@@ -59,6 +60,21 @@ const ScanPage = () => {
     });
     if (response.data.contenu.length === 1) {
       navigate(`/appareils/${response.data.contenu[0].numeroAppareil}`,{ state: { idappAppareil: response.data.contenu[0].idappAppareil } })
+    } else {
+      setinvalidTerm(true);
+    }
+  };
+
+
+  // Recherche selon ID Appareil
+  const VerifIDAppareil = async () => {
+    const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/${searchTerm}`, {
+      headers: {
+         Authorization: `Bearer ${localStorage.getItem('Token')}`
+      }
+    });
+    if (response.data.codeEtat === 200) {
+      navigate(`/appareils/${response.data.contenu.numeroAppareil}`,{ state: { idappAppareil: response.data.contenu.idappAppareil } })
     } else {
       setinvalidTerm(true);
     }
@@ -110,7 +126,7 @@ const ScanPage = () => {
 
           <form noValidate autoComplete="off" onSubmit={handleSubmit}>
             <Box display="flex" flexDirection="column" alignItems="center">
-              <TextField label="Rechercher" variant="outlined" value={searchTerm} onChange={handleSearchChange} className='search-bar' />
+              <TextField autoFocus label="Rechercher" variant="outlined" value={searchTerm} onChange={handleSearchChange} className='search-bar' />
               <Button variant="contained" type="submit" style={{ marginTop: '20px', width: '150px', background: 'white', color: '#00759C', fontWeight: 'bold' }}> Rechercher </Button>
               {invalidTerm && (
                 <p className="error-message" style={{ color: 'red', fontWeight: 'bold', marginTop: '10px' }}>
