@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import DATFIC from '../../components/FIC/APP/General/OngletGeneral';
 import HistoriqueList from '../../components/FIC/APP/Historique/OngletHistorique';
 import {Tab, Box,  useMediaQuery, useTheme } from '@mui/material';
@@ -11,6 +11,8 @@ import SwipeableEdgeDrawer from '../../components/Drawer/OngletAutre';
 export default function APPAPFIC(){
   const theme = useTheme();
   const { numeroAppareil } = useParams();
+  const location = useLocation();
+  const { idappAppareil } = location.state || {};
   const [value, setValue] = useState(0);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -27,7 +29,8 @@ export default function APPAPFIC(){
       case 0:
         return <DATFIC numero={numeroAppareil} />;
       case 1:
-        return <HistoriqueList />;
+        console.log(idappAppareil);
+        return <HistoriqueList id={idappAppareil}/>;
       case 2:
         return isMobile ? <SwipeableEdgeDrawer ouvre={true}/> : <DATFIC numero={numeroAppareil} />;
       case 3:

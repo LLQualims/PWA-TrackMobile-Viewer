@@ -58,7 +58,7 @@ const ScanPage = () => {
       }
     });
     if (response.data.contenu.length === 1) {
-      navigate(`/appareils/${response.data.contenu[0].numeroAppareil}`)
+      navigate(`/appareils/${response.data.contenu[0].numeroAppareil}`,{ state: { idappAppareil: response.data.contenu[0].idappAppareil } })
     } else {
       setinvalidTerm(true);
     }

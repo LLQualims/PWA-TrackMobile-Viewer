@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './OngletHistorique.css';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
-const HistoriqueList = () => {
-  const [data, setData] = useState([]);
+
+const HistoriqueList = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  const sortedData = [...data].sort((a, b) => {
-    // Comparer les numéros d'appareil de manière alphabétique
-    return a.numeroAppareil.localeCompare(b.numeroAppareil);
-  });
+  const [data, setData] = useState([]);
 
+ 
 
   useEffect(() => {
+
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.39.68:4500/8.1b/app/appareil/10/historique', {
+        const response = await axios.get(`${localStorage.getItem('URLServeur')}/app/appareil/${props.id}/historique`, {
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJJZCI6ImI2NGQ5N2RkLTE4YTAtNDJkMi1hZTNkLWViM2Q5ZDRlYTQ5MCIsInN1YklkIjoiNzYiLCJzdWIiOiJLUCIsImp0aSI6IjFkZGEyODRmLTZjZTQtNGRlMC04NDEzLTk1NGI2YWI2YWM0MCIsIlByb2ZpbEVRTSI6IjYiLCJQcm9maWxMQUIiOiIxMCIsIm5iZiI6MTcxOTQ5ODE1OSwiZXhwIjoyMDE5NTAxNzU5LCJpYXQiOjE3MTk0OTgxNTksImlzcyI6IklOT0tZIiwiYXVkIjoiUVVBTElNUyJ9.TaF3QoT2AooxmPD6l_vXWFCnKDguU0pGiaGymo4_6mg'
+            Authorization: `Bearer ${localStorage.getItem('Token')}`
           }
         });
         // Vérifiez si la propriété 'contenu' est un tableau
@@ -37,7 +38,9 @@ const HistoriqueList = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Box sx={{ marginTop: "10%" }}>
+            <CircularProgress />
+          </Box>
   }
 
   if (error) {
@@ -47,10 +50,11 @@ const HistoriqueList = () => {
   return (
     <div className='tabAPP'>
       <ul className='list'>
-        {sortedData.map((item) => (
+        {data.map((item) => (
            <button key={item.idappOperation}  className='list-item-button' type="button">
            <img src={require(`../../../../assets/Images/APP_MiseAuRebut-128-1.png`)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
            <div className='contenu'>
+             <p>{item.idappOperation}</p>
              <p>{item.heureOperation}</p>
              <p>{item.dateOperation}</p>
              <p>{item.nomIntervenant}</p>
