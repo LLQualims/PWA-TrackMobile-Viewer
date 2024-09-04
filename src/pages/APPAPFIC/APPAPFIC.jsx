@@ -29,12 +29,11 @@ export default function APPAPFIC(){
       case 0:
         return <DATFIC numero={numeroAppareil} />;
       case 1:
-        console.log(idappAppareil);
         return <HistoriqueList id={idappAppareil}/>;
       case 2:
-        return isMobile ? <SwipeableEdgeDrawer ouvre={true}/> : <DATFIC numero={numeroAppareil} />;
+        return isMobile ? <SwipeableEdgeDrawer ouvre={true}/> : null ;
       case 3:
-        return <SwipeableEdgeDrawer />;
+        return ;
       case 4:
         return ;
       case 5:
