@@ -41,8 +41,3 @@
     color: white;
     font-size: 22px;
 }
-
-#valeurs_appareil {
-    height:250px;
-    overflow: auto;
-}

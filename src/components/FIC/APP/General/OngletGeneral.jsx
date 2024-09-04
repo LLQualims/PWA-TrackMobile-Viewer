@@ -54,7 +54,7 @@ const DATFIC = (props) => {
                     <p id="txt_statut_texte" className="superpose">{item.appStatut ? item.appStatut.designationStatut : ""}</p>
                 </div>
 
-                <div id="valeurs_appareil">
+                <div>
                     <ChampDetailCadre libelle="Famille" valeur={item.appFamille ? item.appFamille.designationFamille : ""} />
                     <ChampDetailCadre libelle="Numéro Appareil" valeur={item.numeroAppareil} />
                     <ChampDetailCadre libelle="Désignation Appareil" valeur={item.designationAppareil} />
