@@ -1,0 +1,48 @@
+#statut {
+    position: relative;
+    top: -1px;
+    max-width: 500px;
+    width: 95%;
+    margin: 30px auto;
+}
+
+.superpose {
+    position: absolute;
+}
+
+#img_statut_fond {
+    z-index: 10;
+    width:100%
+}
+
+#img_statut_etat {
+    z-index: 11;
+
+    /* Dimension et positionnement horizontal */
+    width: auto;
+    left:12%;
+
+    /* Dimension et positionnement vertical */
+    height: 80%;
+    top: 10%;
+}
+
+#txt_statut_texte {
+    z-index: 11;
+
+    /* Dimension et positionnement horizontal */
+    width: 50%;
+    left: 50%;
+
+    /* Dimension et positionnement vertical */
+    height: 100%;
+    top:15%;
+
+    color: white;
+    font-size: 22px;
+}
+
+#valeurs_appareil {
+    height:250px;
+    overflow: auto;
+}
