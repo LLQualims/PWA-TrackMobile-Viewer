@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './OngletHistorique.css';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
-const HistoriqueList = () => {
-  const [data, setData] = useState([]);
+
+const HistoriqueList = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  const sortedData = [...data].sort((a, b) => {
-    // Comparer les numéros d'appareil de manière alphabétique
-    return a.numeroAppareil.localeCompare(b.numeroAppareil);
-  });
+  const [data, setData] = useState([]);
 
+ 
 
   useEffect(() => {
+
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.39.68:4500/8.1b/app/appareil/10/historique', {
+        const response = await axios.get(`${localStorage.getItem('URLServeur')}/app/appareil/${props.id}/historique`, {
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJJZCI6ImI2NGQ5N2RkLTE4YTAtNDJkMi1hZTNkLWViM2Q5ZDRlYTQ5MCIsInN1YklkIjoiNzYiLCJzdWIiOiJLUCIsImp0aSI6IjFkZGEyODRmLTZjZTQtNGRlMC04NDEzLTk1NGI2YWI2YWM0MCIsIlByb2ZpbEVRTSI6IjYiLCJQcm9maWxMQUIiOiIxMCIsIm5iZiI6MTcxOTQ5ODE1OSwiZXhwIjoyMDE5NTAxNzU5LCJpYXQiOjE3MTk0OTgxNTksImlzcyI6IklOT0tZIiwiYXVkIjoiUVVBTElNUyJ9.TaF3QoT2AooxmPD6l_vXWFCnKDguU0pGiaGymo4_6mg'
+            Authorization: `Bearer ${localStorage.getItem('Token')}`,
+            SousEntites: '1'
           }
         });
-        // Vérifiez si la propriété 'contenu' est un tableau
         if (Array.isArray(response.data.contenu)) {
           setData(response.data.contenu);
         } else {
@@ -37,23 +38,48 @@ const HistoriqueList = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Box sx={{ marginTop: "10%" }}>
+            <CircularProgress />
+          </Box>
   }
 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
+  
+    const getImageOperation = (idappNatureOperation, nomImage) => {
+      let img = nomImage;
+      
+      switch(idappNatureOperation) {
+        case 1: case 2:
+          return require('../../../../assets/Images/APP_Acquisition-128-1.png');
+        case 90: case 98:
+          return require('../../../../assets/Images/APP_Derogation-128-1.png');
+        case 94:
+          return require('../../../../assets/Images/APP_MiseHorsService-128-1.png');
+        case 95:
+          return require('../../../../assets/Images/APP_RemiseEnService-128-1.png');
+        case 96:
+          return require('../../../../assets/Images/APP_MiseEnReserve-128-1.png');
+        case 97:
+          return require('../../../../assets/Images/APP_MiseAuRebut-128-1.png');
+        default:
+          return require(`../../../../assets/Images/${img.replace("XX-X.XXX", "128-1.png")}`);
+      }
+
+      return
+    };
+
   return (
     <div className='tabAPP'>
       <ul className='list'>
-        {sortedData.map((item) => (
+        {data.map((item) => (
            <button key={item.idappOperation}  className='list-item-button' type="button">
-           <img src={require(`../../../../assets/Images/APP_MiseAuRebut-128-1.png`)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
+           <img src={getImageOperation(item.idappNatureOperation,item.appNatureOperation.nomImage)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
            <div className='contenu'>
-             <p>{item.heureOperation}</p>
-             <p>{item.dateOperation}</p>
-             <p>{item.nomIntervenant}</p>
+           <p className='natureoperation'>{item.appNatureOperation.designationNatureOperation}</p>
+           <p className='dateoperation'>{item.dateOperation} {item.heureOperation}</p>
            </div>
          </button>
         ))}
