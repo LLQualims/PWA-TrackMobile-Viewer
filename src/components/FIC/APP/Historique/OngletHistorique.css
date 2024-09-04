@@ -1,0 +1,48 @@
+.list {
+    display: flex; /* Utilise Flexbox pour centrer les éléments enfants */
+    flex-direction: column; /* Dispose les éléments enfants en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
+}
+
+.list-item-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    background-color: rgba(219, 219, 219, 0.586);
+    width: 60%; 
+    margin-bottom: 10px; 
+    border-radius: 10px;
+    overflow: hidden; 
+  }
+
+  .list-item-button .contenu {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.contenu {
+    text-align: left;
+    margin-left: 10px;
+  }
+
+.item-image{
+  width: 7%;
+  padding: 1%;
+}
+
+.numeroappareil {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.designationappareil {
+  color: rgb(158, 158, 158); 
+  margin-top: 1px;
+  font-size: smaller;
+}
+
+
