@@ -13,7 +13,7 @@ const DATFIC = (props) => {
       try {
           const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/numero`,  {
           headers: {
-                  Authorization: 'Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjM5MjQ4MGQwLTMyMTMtNGVlMy1iMTRmLTM1ODQ0NWUyZTE4ZSIsInN1YklkIjoiNTMiLCJzdWIiOiJtZ2lyYXJkIiwianRpIjoiYzNjYjgwOTYtYmE0MC00OWQ4LWI0MTQtZjI4ZWJlZmQ5MjY3IiwiUHJvZmlsRVFNIjoiMTMiLCJQcm9maWxMQUIiOiIxMyIsIm5iZiI6MTcyNTI4MzcyMywiZXhwIjoyNTQ1NzM4MjEyLCJpYXQiOjE3MjUyODM3MjMsImlzcyI6IklOT0tZIiwiYXVkIjoiUVVBTElNUyJ9.a_r1VbmKlGroojvEe9WXilMvKW_sw8Ko1cgsMcbyOTLd8fqkwh9EaIpkPmcc0ZEWuFqat6DYp3ZiCZDkFR8sNA',
+                  Authorization: `Bearer ${localStorage.getItem('Token')}`,
                   NumeroAppareil: `${props.numero}`,
                   SousEntites: '1'
           }
