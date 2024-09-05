@@ -17,7 +17,9 @@ const FenConnexionServeur = () => {
 
   const [supported, setSupported] = useState(false);
   const [serverAddress, setServerAddress] = useState('');
+  const [tokenEnter, setTokenEnter] = useState('');
   const [badUrl, setbadUrl] = useState(false);
+  const [badToken, setbadToken] = useState(false);
   const [responseError, setresponseError] = useState('');
   const navigate = useNavigate();
 
@@ -33,12 +35,23 @@ const FenConnexionServeur = () => {
   const handleScan = async (result) => {
     const data = JSON.parse(result);
     const url = data['URL'];
+    const token = data['JWTToken']
+    
     setresponseError(url)
+    
     localStorage.removeItem("URLServeur");
-    const isValid = await VerificationUrl(url);
-    if (isValid) {
+    localStorage.removeItem("Token");
+
+    if (await VerificationUrl(url)) {
       localStorage.setItem("URLServeur", url);
-      navigate('/');
+
+      if (await VerificationTokenValide(token)){
+        localStorage.setItem("Token", token);
+        navigate('/');
+      }else{
+        setbadToken(true)
+        setresponseError("Token non valide")        
+      }
     } else {
       setbadUrl(true)
     }
@@ -54,13 +67,34 @@ const FenConnexionServeur = () => {
     }
   };
 
+  const VerificationTokenValide = async (token) => {
+    try {
+      const response = await axios.get(`${localStorage.getItem("URLServeur")}/helloworld/ValiditeToken`,  {
+      headers: {
+              Authorization: `Bearer ${token}`
+        }
+      });
+      return response.status === 200;
+    } catch (err) {
+      return false;
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     localStorage.removeItem("URLServeur");
-    const isValid = await VerificationUrl(serverAddress);
-    if (isValid) {
+    localStorage.removeItem("JWTToken");
+   
+    if (await VerificationUrl(serverAddress)) {
       localStorage.setItem("URLServeur", serverAddress);
-      navigate('/');
+
+      if (await VerificationTokenValide(tokenEnter)){
+        localStorage.setItem("Token", tokenEnter);
+        navigate('/');
+      }else{
+        setbadToken(true);
+        setresponseError("Token non valide")        
+      }
     } else {
       setbadUrl(true)
     }
@@ -82,11 +116,15 @@ const FenConnexionServeur = () => {
         <div className='url-text-container'>
           <form noValidate autoComplete="off" onSubmit={handleSubmit}>
             <Box display="flex" flexDirection="column" alignItems="center">
-              <p> Entrez l'adresse du serveur</p>
+              <p> Copiez l'adresse du serveur ainsi que le jeton d'identification</p>
               <TextField style={{ background: 'white', width: '70%' }} onChange={(e) => setServerAddress(e.target.value)} placeholder="https://trackmobile.com" variant="outlined" margin="normal" />
+              <TextField style={{ background: 'white', width: '70%' }} onChange={(e) => setTokenEnter(e.target.value)} placeholder="eyJhbGciOiJIUzI1NiJ9.eyJJZCI6ImI2NGQ5N2RkLTE4YTAtNDJkMi1hZTNkLWViM2Q5ZDRlYTQ5MCIsInN1YklkIjoiNzYiLCJzdWIiOiJLUCIsImp0aSI6IjFkZGEyODRmLTZjZTQtNGRlMC04NDEzLTk1NGI2YWI2YWM0MCIsIlByb2ZpbEVRTSI6IjYiLCJQcm9maWxMQUIiOiIxMCIsIm5iZiI6MTcxOTQ5ODE1OSwiZXhwIjoyMDE5NTAxNzU5LCJpYXQiOjE3MTk0OTgxNTksImlzcyI6IklOT0tZIiwiYXVkIjoiUVVBTElNUyJ9.TaF3QoT2AooxmPD6l_vXWFCnKDguU0pGiaGymo4_6mg" variant="outlined" margin="normal" />
               <Button variant="contained" type="submit" style={{ marginTop: '20px', width: '150px', background: 'white', color: '#00759C', fontWeight: 'bold' }}> Connexion </Button>
               {badUrl && (
                 <p className='error-badurl'>Connexion au serveur impossible {responseError}</p>
+              )}
+              {badToken && (
+                <p className='error-badurl'>Token invalide {responseError}</p>
               )}
             </Box>
           </form>
