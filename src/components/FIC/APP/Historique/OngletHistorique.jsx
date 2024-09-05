@@ -72,6 +72,16 @@ const HistoriqueList = (props) => {
       }
     };
 
+    const getCouleurWindev = (color) => {
+      console.log(color);
+        const bleu = Math.floor(color / 65536);
+        const vert = Math.floor((color - (bleu * 65536)) / 256);
+        const rouge = color - (bleu * 65536) - (vert * 256);
+      
+        // Retourne la couleur au format rgb
+        return `rgb(${rouge}, ${vert}, ${bleu})`;
+    };
+
   return (
     <div className='tabHistorique'>
       <p className='titreonglet'>LISTE DES OPÉRATIONS</p>
@@ -87,7 +97,7 @@ const HistoriqueList = (props) => {
       ) : (
         data.map((item) => (
            <button key={item.idappOperation}  className='list-item-button' type="button">
-           <div className='statutoperation'></div>
+           <div className='statutoperation' style={{ backgroundColor: getCouleurWindev(item.appStatut?.couleur)}}></div>
            <img src={getImageOperation(item.idappNatureOperation,item.appNatureOperation.nomImage)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
            <div className='contenu'>
            <p className='natureoperation'>{item.appNatureOperation.designationNatureOperation}</p>
