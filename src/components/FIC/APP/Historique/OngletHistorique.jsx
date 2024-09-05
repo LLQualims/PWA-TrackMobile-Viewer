@@ -79,7 +79,7 @@ const HistoriqueList = (props) => {
         <p className='nbresultat'>{nbresult} opérations</p>
           <FormControlLabel className='selectarchives' value="start" control={<Switch  checked={archives} onChange={(event) => setArchives(event.target.checked)}/>} label="Afficher les archives" labelPlacement="start"/>
       </div>
-
+      
       {loading ? (
         <Box sx={{ marginTop: "10%" }}>
           <CircularProgress />
@@ -87,6 +87,7 @@ const HistoriqueList = (props) => {
       ) : (
         data.map((item) => (
            <button key={item.idappOperation}  className='list-item-button' type="button">
+           <div className='statutoperation'></div>
            <img src={getImageOperation(item.idappNatureOperation,item.appNatureOperation.nomImage)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
            <div className='contenu'>
            <p className='natureoperation'>{item.appNatureOperation.designationNatureOperation}</p>
