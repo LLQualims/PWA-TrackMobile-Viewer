@@ -21,10 +21,6 @@ export default function APPAPFIC(){
   const tabsToShow = isMobile ? mobileTabs : allTabs;
 
   const AfficheTab = () => {
-    if (isMobile && value === 2) {
-      return <SwipeableEdgeDrawer />;
-    }
-
     switch (value) {
       case 0:
         return <DATFIC numero={numeroAppareil} />;

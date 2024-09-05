@@ -3,27 +3,36 @@ import axios from 'axios';
 import './OngletHistorique.css';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 const HistoriqueList = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
-
+  const [nbresult, setnbResult] = useState(0);
+  const [archives, setArchives] = useState(true);
  
 
   useEffect(() => {
 
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+
       try {
         const response = await axios.get(`${localStorage.getItem('URLServeur')}/app/appareil/${props.id}/historique`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('Token')}`,
-            SousEntites: '1'
+            SousEntites: '1',
+            Archives: archives ? '1' : '0' 
           }
         });
+
         if (Array.isArray(response.data.contenu)) {
           setData(response.data.contenu);
+          setnbResult(response.data.contenu.length);
         } else {
           throw new Error('Les données récupérées ne sont pas un tableau');
         }
@@ -35,13 +44,7 @@ const HistoriqueList = (props) => {
     };
 
     fetchData();
-  }, []);
-
-  if (loading) {
-    return <Box sx={{ marginTop: "10%" }}>
-            <CircularProgress />
-          </Box>
-  }
+  },[archives, props.id]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -70,8 +73,19 @@ const HistoriqueList = (props) => {
     };
 
   return (
-    <div className='tabAPP'>
-        {data.map((item) => (
+    <div className='tabHistorique'>
+      <p className='titreonglet'>LISTE DES OPÉRATIONS</p>
+      <div className='headeroperations'>
+        <p className='nbresultat'>{nbresult} opérations</p>
+          <FormControlLabel className='selectarchives' value="start" control={<Switch  checked={archives} onChange={(event) => setArchives(event.target.checked)}/>} label="Afficher les archives" labelPlacement="start"/>
+      </div>
+
+      {loading ? (
+        <Box sx={{ marginTop: "10%" }}>
+          <CircularProgress />
+        </Box>
+      ) : (
+        data.map((item) => (
            <button key={item.idappOperation}  className='list-item-button' type="button">
            <img src={getImageOperation(item.idappNatureOperation,item.appNatureOperation.nomImage)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
            <div className='contenu'>
@@ -79,7 +93,8 @@ const HistoriqueList = (props) => {
            <p className='dateoperation'>{new Date(item.dateOperation).toLocaleDateString()} {`${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}</p>
            </div>
          </button>
-        ))}
+        ))
+      )}
     </div>
   );
 };
