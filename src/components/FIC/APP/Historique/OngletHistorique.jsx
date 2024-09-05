@@ -67,23 +67,19 @@ const HistoriqueList = (props) => {
         default:
           return require(`../../../../assets/Images/${img.replace("XX-X.XXX", "128-1.png")}`);
       }
-
-      return
     };
 
   return (
     <div className='tabAPP'>
-      <ul className='list'>
         {data.map((item) => (
            <button key={item.idappOperation}  className='list-item-button' type="button">
            <img src={getImageOperation(item.idappNatureOperation,item.appNatureOperation.nomImage)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
            <div className='contenu'>
            <p className='natureoperation'>{item.appNatureOperation.designationNatureOperation}</p>
-           <p className='dateoperation'>{item.dateOperation} {item.heureOperation}</p>
+           <p className='dateoperation'>{new Date(item.dateOperation).toLocaleDateString()} {`${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}</p>
            </div>
          </button>
         ))}
-      </ul>
     </div>
   );
 };
