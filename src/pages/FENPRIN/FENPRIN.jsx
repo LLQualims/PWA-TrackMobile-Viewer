@@ -8,7 +8,7 @@ const FenPrincipale = () => {
 
   return (
     <div className='FENPRIN'>
-      <img src={require("../../assets/TM_Titre.png")} className="titrefen" alt="titre" />
+          <img src={require("../../assets/TM_Titre.png")} className="titrefen" alt="titre" onClick={() => navigate('/apropos')} />
         <div className='menu-container'>
           <div className="image-container">
             <p>SCAN</p>
