@@ -83,7 +83,7 @@ const HistoriqueList = (props) => {
     };
 
   return (
-    <div className='tabHistorique'>
+    <div className='tab'>
       <p className='titreonglet'>LISTE DES OPÉRATIONS</p>
       <div className='headeroperations'>
         <p className='nbresultat'>{nbresult} opérations</p>

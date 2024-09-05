@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ChampDetailCadre from './ChampDetailCadre';
-import './OngletGeneral.css'
+import './OngletGeneral.css';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const DATFIC = (props) => {
   const [data, setData] = useState([]);
@@ -34,27 +36,29 @@ const DATFIC = (props) => {
     fetchData();
   },[]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
   return (
-    <div>
-     
-        {data.map((item) => (
-            <div>
+    <div className='tab'>
+      <div className='headeroperations'>
+        <p className='titreonglet'>INFORMATIONS SUR L'APPAREIL</p>
+      </div>
 
+      {loading ? (
+        <Box sx={{ marginTop: "10%" }}>
+          <CircularProgress />
+        </Box>
+      ) : (
+        data.map((item) => (
+            <div className='infosgeneral'>
+              
                 <div id="statut">
                     <img id="img_statut_fond" src={require(`../../../../assets/Images/STD_Statut${item.idappStatut}-128-1.png`)} alt="Statut" />
                     <img id="img_statut_etat" className="superpose" src={require(`../../../../assets/Images/APP_Etat7-72-1.png`)} />
                     <p id="txt_statut_texte" className="superpose">{item.appStatut ? item.appStatut.designationStatut : ""}</p>
                 </div>
-
-                <div>
                     <ChampDetailCadre libelle="Famille" valeur={item.appFamille ? item.appFamille.designationFamille : ""} />
                     <ChampDetailCadre libelle="Numéro Appareil" valeur={item.numeroAppareil} />
                     <ChampDetailCadre libelle="Désignation Appareil" valeur={item.designationAppareil} />
@@ -68,11 +72,10 @@ const DATFIC = (props) => {
                     <ChampDetailCadre libelle="Numéro Série" valeur={item.numeroSerie} />
                     <ChampDetailCadre libelle="Info Étiquette" valeur={item.infoEtiquette} />
                     <ChampDetailCadre libelle="Remarque" valeur={item.remarqueHTML} />
-                </div>
             </div>
-        ))}
+          ))
+        )};
     </div>
-);
-};
-
+      );
+    };
 export default DATFIC;
