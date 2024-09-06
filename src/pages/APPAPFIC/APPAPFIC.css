@@ -1,9 +1,9 @@
 .titre {
   width: 30%;
-  margin-top: 50px;
+  margin-left: 35%;
 }
 
-.headerFic{
+.header-onglet{
   z-index: 1000;
   width: 100%;
   position: fixed;
@@ -18,10 +18,25 @@
   padding-top: 200px;
 }
 
+.header{
+  padding-top: 30px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.btn-retour{
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
+
+
   @media screen and (max-width: 1024px) {
   .titre {
     width: 60%;
-    margin-top: 50px;
+    margin-left: 13%;
   }
   .content {
     padding-top: 170px;

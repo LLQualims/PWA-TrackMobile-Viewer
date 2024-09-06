@@ -7,10 +7,13 @@ import {Tab, Box,  useMediaQuery, useTheme } from '@mui/material';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import './APPAPFIC.css';
 import SwipeableEdgeDrawer from '../../components/Drawer/OngletAutre';
-
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { useNavigate } from 'react-router-dom';
 
 export default function APPAPFIC(){
+
   const theme = useTheme();
+  const navigate = useNavigate();
   const { numeroAppareil } = useParams();
   const location = useLocation();
   const { idappAppareil } = location.state || {};
@@ -45,8 +48,14 @@ export default function APPAPFIC(){
   };
   return (
     <>
-    <div className='headerFic'>
-      <img src={require("../../assets/Images/APP_Titre-128-1.png")} className="titre" alt="titre" />
+    <div className='header-onglet'>
+      <div className='header'>
+        <button className='btn-retour' onClick={() => navigate('/scan')}>
+          <ArrowBackIosNewIcon/>
+        </button>
+        <img src={require("../../assets/Images/APP_Titre-128-1.png")} className="titre" alt="titre" />
+      </div>
+     
       <Box className="menu-onglets" sx={{ color:'EQM.main', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "25px"}}>
         <Tabs
           value={value}
