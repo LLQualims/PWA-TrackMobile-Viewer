@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ChampDetailCadre from '../FIC/APP/General/ChampDetailCadre';
+import TextFieldReadonly from '../ChampsUISimples/TextFieldReadonly';
 
 export default function InfosBdd() {
 
@@ -38,12 +38,12 @@ export default function InfosBdd() {
     }
     return (
         <div>
-                <ChampDetailCadre libelle='Propriétaire' valeur=''></ChampDetailCadre>
-                <ChampDetailCadre libelle='Licence' valeur=''></ChampDetailCadre>
-                <ChampDetailCadre libelle='Base' valeur={dataBdd.Moteur_Instance}></ChampDetailCadre>
-                <ChampDetailCadre libelle='Source' valeur={dataBdd.Nom_Bdd}></ChampDetailCadre>
-                <ChampDetailCadre libelle='Utilisateur' valeur={dataBdd.Utilisateur_Instance}></ChampDetailCadre>
-                <ChampDetailCadre libelle='Version de lapplication' valeur=''></ChampDetailCadre>
+            <TextFieldReadonly libelle='Propriétaire' valeur=''></TextFieldReadonly>
+            <TextFieldReadonly libelle='Licence' valeur=''></TextFieldReadonly>
+            <TextFieldReadonly libelle='Base' valeur={dataBdd.Moteur_Instance}></TextFieldReadonly>
+            <TextFieldReadonly libelle='Source' valeur={dataBdd.Nom_Bdd}></TextFieldReadonly>
+            <TextFieldReadonly libelle='Utilisateur' valeur={dataBdd.Utilisateur_Instance}></TextFieldReadonly>
+            <TextFieldReadonly libelle='Version de lapplication' valeur=''></TextFieldReadonly>
         </div>
     );
 }

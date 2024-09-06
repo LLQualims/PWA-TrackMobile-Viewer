@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ChampDetailCadre from './ChampDetailCadre';
+import TextFieldReadonly from '../../../ChampsUISimples/TextFieldReadonly';
+import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import './OngletGeneral.css'
 
 const DATFIC = (props) => {
@@ -35,7 +36,7 @@ const DATFIC = (props) => {
   },[]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><CircularProgress/></div>;
   }
 
   if (error) {
@@ -55,19 +56,19 @@ const DATFIC = (props) => {
                 </div>
 
                 <div>
-                    <ChampDetailCadre libelle="Famille" valeur={item.appFamille ? item.appFamille.designationFamille : ""} />
-                    <ChampDetailCadre libelle="Numéro Appareil" valeur={item.numeroAppareil} />
-                    <ChampDetailCadre libelle="Désignation Appareil" valeur={item.designationAppareil} />
-                    <ChampDetailCadre libelle="Responsable" valeur={item.responsable ? item.responsable.prenomPersonnel + " " + item.responsable.nomPersonnel : ""} />
-                    <ChampDetailCadre libelle="Localisation" valeur={item.envSalle ? item.envSalle.numeroSalle + " " + item.envSalle.designationSalle : ""} />
-                    <ChampDetailCadre libelle="Prochaine Opération" valeur={item.dateFutureOperation ? new Date(item.dateFutureOperation).toLocaleDateString() : 'N/A'} />
-                    <ChampDetailCadre libelle="Type" valeur={item.appType ? item.appType.designationType : ""} />
-                    <ChampDetailCadre libelle="Date Acquisition" valeur={item.dateAcquisition ? new Date(item.dateAcquisition).toLocaleDateString() : 'N/A'} />
-                    <ChampDetailCadre libelle="Date Mise En Service" valeur={item.dateMiseEnService ? new Date(item.dateMiseEnService).toLocaleDateString() : 'N/A'} />
-                    <ChampDetailCadre libelle="Marque Appareil" valeur={item.marqueAppareil} />
-                    <ChampDetailCadre libelle="Numéro Série" valeur={item.numeroSerie} />
-                    <ChampDetailCadre libelle="Info Étiquette" valeur={item.infoEtiquette} />
-                    <ChampDetailCadre libelle="Remarque" valeur={item.remarqueHTML} />
+                    <TextFieldReadonly libelle="Famille" valeur={item.appFamille ? item.appFamille.designationFamille : ""} />
+                    <TextFieldReadonly libelle="Numéro Appareil" valeur={item.numeroAppareil} />
+                    <TextFieldReadonly libelle="Désignation Appareil" valeur={item.designationAppareil} />
+                    <TextFieldReadonly libelle="Responsable" valeur={item.responsable ? item.responsable.prenomPersonnel + " " + item.responsable.nomPersonnel : ""} />
+                    <TextFieldReadonly libelle="Localisation" valeur={item.envSalle ? item.envSalle.numeroSalle + " " + item.envSalle.designationSalle : ""} />
+                    <TextFieldReadonly libelle="Prochaine Opération" valeur={item.dateFutureOperation ? new Date(item.dateFutureOperation).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="Type" valeur={item.appType ? item.appType.designationType : ""} />
+                    <TextFieldReadonly libelle="Date Acquisition" valeur={item.dateAcquisition ? new Date(item.dateAcquisition).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="Date Mise En Service" valeur={item.dateMiseEnService ? new Date(item.dateMiseEnService).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="Marque Appareil" valeur={item.marqueAppareil} />
+                    <TextFieldReadonly libelle="Numéro Série" valeur={item.numeroSerie} />
+                    <TextFieldReadonly libelle="Info Étiquette" valeur={item.infoEtiquette} />
+                    <TextFieldReadonly libelle="Remarque" valeur={item.remarqueHTML} />
                 </div>
             </div>
         ))}

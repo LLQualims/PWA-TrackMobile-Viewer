@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ChampDetailCadre from '../FIC/APP/General/ChampDetailCadre';
+import TextFieldReadonly from '../ChampsUISimples/TextFieldReadonly';
 
 export default function InfosBdd() {
 
@@ -38,9 +38,9 @@ export default function InfosBdd() {
     }
     return (
         <div>
-            <ChampDetailCadre libelle='Version du serveur dAPI' valeur={dataApi.Version}></ChampDetailCadre>
-            <ChampDetailCadre libelle='URL du serveur' valeur={localStorage.getItem("URLServeur")}></ChampDetailCadre>
-            <ChampDetailCadre libelle='Nom de lapplication' valeur='Track Mobile Viewer'></ChampDetailCadre>
+            <TextFieldReadonly libelle='Version du serveur dAPI' valeur={dataApi.Version}></TextFieldReadonly>
+            <TextFieldReadonly libelle='URL du serveur' valeur={localStorage.getItem("URLServeur")}></TextFieldReadonly>
+            <TextFieldReadonly libelle='Nom de lapplication' valeur='Track Mobile Viewer'></TextFieldReadonly>
         </div>
     );
 }

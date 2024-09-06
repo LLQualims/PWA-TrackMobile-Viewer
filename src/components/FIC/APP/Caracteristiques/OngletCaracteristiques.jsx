@@ -1,11 +1,8 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../Historique/OngletHistorique.css';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-
+import CircularProgress from '../../../ChampsUISimples/CircularProgress';
+import BlocData from '../../../ChampsUISimples/BlocData';
 
 const OngletCaracteristiques = (props) => {
     const [loading, setLoading] = useState(true);
@@ -43,10 +40,6 @@ const OngletCaracteristiques = (props) => {
         fetchData();
     }, [props.id]);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     if (error) {
         return <div>Error: {error.message}</div>;
     }
@@ -59,17 +52,10 @@ const OngletCaracteristiques = (props) => {
             </div>
 
             {loading ? (
-                <Box sx={{ marginTop: "10%" }}>
-                    <CircularProgress />
-                </Box>
+                <CircularProgress />
             ) : (
-                data.map((item) => (
-                    <button key={item.idappOperation} className='list-item-button' type="button">
-                        <div className='contenu'>
-                            <p className='natureoperation'>{item.designationCaract}</p>
-                            <p className='dateoperation'>{item.valeurCaract}</p>
-                        </div>
-                    </button>
+                    data.map((item) => (
+                        <BlocData ligne1={item.designationCaract} ligne2={item.valeurCaract} urlDestination="/scan" />
                 ))
             )}
         </div>
