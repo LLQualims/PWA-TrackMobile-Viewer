@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import DATFIC from '../../components/FIC/APP/General/OngletGeneral';
 import HistoriqueList from '../../components/FIC/APP/Historique/OngletHistorique';
+import OngletCaracteristiques from '../../components/FIC/APP/Caracteristiques/OngletCaracteristiques'
 import {Tab, Box,  useMediaQuery, useTheme } from '@mui/material';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import './APPAPFIC.css';
@@ -26,8 +27,8 @@ export default function APPAPFIC(){
         return <DATFIC numero={numeroAppareil} />;
       case 1:
         return <HistoriqueList id={idappAppareil}/>;
-      case 2:
-        return isMobile ? <SwipeableEdgeDrawer ouvre={true}/> : null ;
+        case 2:
+            return isMobile ? <SwipeableEdgeDrawer ouvre={true} /> : <OngletCaracteristiques id={idappAppareil}/>;
       case 3:
         return ;
       case 4:
