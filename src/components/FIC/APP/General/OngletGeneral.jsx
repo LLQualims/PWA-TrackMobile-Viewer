@@ -36,20 +36,19 @@ const DATFIC = (props) => {
     fetchData();
   },[]);
 
-  if (loading) {
-    return <div><CircularProgress/></div>;
-  }
-
     if (error) {
         return <Erreur libelleErreur={error.message} />;
   }
 
   return (
-    <div>
-     
-        {data.map((item) => (
-            <div>
-
+    <div className='tab'>
+      <p className='titreonglet'>INFORMATIONS SUR L'APPAREIL</p>
+        
+        {loading ? (
+                <CircularProgress />
+            ) : (
+        data.map((item) => (
+            <div className='infosgeneral'>
                 <div id="statut">
                     <img id="img_statut_fond" src={require(`../../../../assets/Images/STD_Statut${item.idappStatut}-128-1.png`)} alt="Statut" />
                     <img id="img_statut_etat" className="superpose" src={require(`../../../../assets/Images/APP_Etat7-72-1.png`)} />
@@ -72,9 +71,10 @@ const DATFIC = (props) => {
                     <TextFieldReadonly libelle="Remarque" valeur={item.remarqueHTML} />
                 </div>
             </div>
-        ))}
+          ))
+        )}
     </div>
-);
+  );
 };
 
 export default DATFIC;
