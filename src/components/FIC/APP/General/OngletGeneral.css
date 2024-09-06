@@ -36,8 +36,9 @@
 
     /* Dimension et positionnement vertical */
     height: 100%;
-    top:15%;
+    top:20%;
 
+    font-weight: bold;
     color: white;
     font-size: 22px;
 }
@@ -45,3 +46,13 @@
 .infosgeneral{
     width: 100%;
 }
+
+@media screen and (max-width: 1024px) {
+    #statut {
+        max-width: 85%;
+    }
+    #txt_statut_texte {
+        
+        top:15%;
+    }
+  }

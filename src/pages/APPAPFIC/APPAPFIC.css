@@ -1,11 +1,29 @@
 .titre {
-    width: 30%;
-    margin-top: 50px;
-  }
+  width: 30%;
+  margin-top: 50px;
+}
+
+.headerFic{
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+}
+
+.menu-onglets{
+  width: 100%;
+}
+
+.content {
+  padding-top: 200px;
+}
 
   @media screen and (max-width: 1024px) {
   .titre {
-      width: 60%;
-      margin-top: 50px;
-    }
+    width: 60%;
+    margin-top: 50px;
   }
+  .content {
+    padding-top: 170px;
+  }
+}

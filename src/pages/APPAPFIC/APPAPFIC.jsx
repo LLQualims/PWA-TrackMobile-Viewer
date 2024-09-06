@@ -44,48 +44,51 @@ export default function APPAPFIC(){
   };
   return (
     <>
-    <img src={require("../../assets/Images/APP_Titre-128-1.png")} className="titre" alt="titre" />
-    <Box sx={{ color:'EQM.main', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "25px"}}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons
-         textColor="black"
-        indicatorColor="primary"
-        TabIndicatorProps={{
-          style: {
-            height: '3px',
-          },
-        }}
-        sx={{
-          [`& .${tabsClasses.scrollButtons}`]: {
-            '&.Mui-disabled': { opacity: 0.3 },
-          },
-          '.MuiTab-root': {
-            transition: 'none',
-            '&:hover': {
-              transition: 'none',
+    <div className='headerFic'>
+      <img src={require("../../assets/Images/APP_Titre-128-1.png")} className="titre" alt="titre" />
+      <Box className="menu-onglets" sx={{ color:'EQM.main', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "25px"}}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons
+          textColor="black"
+          indicatorColor="primary"
+          TabIndicatorProps={{
+            style: {
+              height: '3px',
             },
-            fontSize: '1.2rem', 
-            marginLeft: '10px',
-            marginRight: '10px'
-          },
-        }}
-      >
-        {tabsToShow.map((label, index) => (
-            <Tab
-              key={index}
-              label={label}
-              sx={{
-                fontWeight: value === index ? 'bold' : 'normal', color: 'black',textTransform: 'none'
-              }}
-            />
-          ))}
-      </Tabs>
+          }}
+          sx={{
+            [`& .${tabsClasses.scrollButtons}`]: {
+              '&.Mui-disabled': { opacity: 0.3 },
+            },
+            '.MuiTab-root': {
+              transition: 'none',
+              '&:hover': {
+                transition: 'none',
+              },
+              fontSize: '1.2rem', 
+              marginLeft: '10px',
+              marginRight: '10px'
+            },
+          }}
+        >
+          {tabsToShow.map((label, index) => (
+              <Tab
+                key={index}
+                label={label}
+                sx={{
+                  fontWeight: value === index ? 'bold' : 'normal', color: 'black',textTransform: 'none'
+                }}
+              />
+            ))}
+        </Tabs>
       </Box>
+    </div>
 
-      {AfficheTab()} 
+
+      <div className="content">{AfficheTab()}</div> 
     </>
   )    
   

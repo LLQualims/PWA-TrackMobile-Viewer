@@ -88,11 +88,7 @@
     margin-bottom: 10px;
   }
   .titreonglet{
-    display: flex;
-    width: 90%;
-    color: #00759C;
-    font-size: x-large;
-    font-weight: bold;
-    margin: 0%;
+    width: 90%; 
+    font-size: large;
   }
-  }
+}

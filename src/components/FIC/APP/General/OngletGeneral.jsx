@@ -42,9 +42,7 @@ const DATFIC = (props) => {
 
   return (
     <div className='tab'>
-      <div className='headeroperations'>
-        <p className='titreonglet'>INFORMATIONS SUR L'APPAREIL</p>
-      </div>
+      <p className='titreonglet'>INFORMATIONS SUR L'APPAREIL</p>
 
       {loading ? (
         <Box sx={{ marginTop: "10%" }}>
@@ -74,8 +72,8 @@ const DATFIC = (props) => {
                     <ChampDetailCadre libelle="Remarque" valeur={item.remarqueHTML} />
             </div>
           ))
-        )};
+        )}
     </div>
-      );
+      )
     };
 export default DATFIC;

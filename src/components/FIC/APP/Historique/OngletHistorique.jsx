@@ -12,7 +12,7 @@ const HistoriqueList = (props) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
   const [nbresult, setnbResult] = useState(0);
-  const [archives, setArchives] = useState(true);
+  const [archives, setArchives] = useState(false);
  
 
   useEffect(() => {
