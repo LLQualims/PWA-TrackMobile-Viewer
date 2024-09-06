@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TextFieldReadonly from '../../../ChampsUISimples/TextFieldReadonly';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
+import Erreur from '../../../ChampsUISimples/Erreur';
 import './OngletGeneral.css'
 
 const DATFIC = (props) => {
@@ -39,8 +40,8 @@ const DATFIC = (props) => {
     return <div><CircularProgress/></div>;
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
+    if (error) {
+        return <Erreur libelleErreur={error.message} />;
   }
 
   return (

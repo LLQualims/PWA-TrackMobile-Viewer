@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './OngletHistorique.css';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import CircularProgress from '../../../ChampsUISimples/CircularProgress';
+import BlocData from '../../../ChampsUISimples/BlocData';
+import Erreur from '../../../ChampsUISimples/Erreur';
 
 
 const HistoriqueList = (props) => {
@@ -46,8 +47,8 @@ const HistoriqueList = (props) => {
     fetchData();
   },[archives, props.id]);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
+    if (error) {
+        return <Erreur libelleErreur={error.message } />;
   }
 
   
@@ -90,20 +91,17 @@ const HistoriqueList = (props) => {
           <FormControlLabel className='selectarchives' value="start" control={<Switch  checked={archives} onChange={(event) => setArchives(event.target.checked)}/>} label="Afficher les archives" labelPlacement="start"/>
       </div>
       
-      {loading ? (
-        <Box sx={{ marginTop: "10%" }}>
-          <CircularProgress />
-        </Box>
-      ) : (
-        data.map((item) => (
-           <button key={item.idappOperation}  className='list-item-button' type="button">
-           <div className='statutoperation' style={{ backgroundColor: getCouleurWindev(item.appStatut?.couleur)}}></div>
-           <img src={getImageOperation(item.idappNatureOperation,item.appNatureOperation.nomImage)} alt={`Image of ${item.idappNatureOperation}`} className="item-image" />
-           <div className='contenu'>
-           <p className='natureoperation'>{item.appNatureOperation.designationNatureOperation}</p>
-           <p className='dateoperation'>{new Date(item.dateOperation).toLocaleDateString()} {`${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}</p>
-           </div>
-         </button>
+          {loading ? (
+              <CircularProgress />
+          ) : (
+              data.map((item) => (
+                  <BlocData
+                      image={getImageOperation(item.idappNatureOperation, item.appNatureOperation.nomImage)}
+                      altImage={`Image of ${item.idappNatureOperation}`}
+                      ligne1={item.appNatureOperation.designationNatureOperation}
+                      ligne2={`${new Date(item.dateOperation).toLocaleDateString()} ${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}
+                      couleurStatut={getCouleurWindev(item.appStatut?.couleur)}
+                  />
         ))
       )}
     </div>

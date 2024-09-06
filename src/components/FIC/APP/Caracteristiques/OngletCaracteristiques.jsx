@@ -1,8 +1,9 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../Historique/OngletHistorique.css';
+import '../Caracteristiques/OngletCaracteristiques.css';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import BlocData from '../../../ChampsUISimples/BlocData';
+import Erreur from '../../../ChampsUISimples/Erreur'
 
 const OngletCaracteristiques = (props) => {
     const [loading, setLoading] = useState(true);
@@ -41,11 +42,11 @@ const OngletCaracteristiques = (props) => {
     }, [props.id]);
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <Erreur libelleErreur={error.message} />;
     }
 
     return (
-        <div className='tabHistorique'>
+        <div className='tab'>
             <p className='titreonglet'>CARACTERISTIQUES</p>
             <div className='headeroperations'>
                 <p className='nbresultat'>{nbresult} caractéristiques</p>
@@ -55,7 +56,7 @@ const OngletCaracteristiques = (props) => {
                 <CircularProgress />
             ) : (
                     data.map((item) => (
-                        <BlocData ligne1={item.designationCaract} ligne2={item.valeurCaract} urlDestination="/scan" />
+                        <BlocData ligne1={item.designationCaract} ligne2={item.valeurCaract} />
                 ))
             )}
         </div>

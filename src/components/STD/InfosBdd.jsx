@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TextFieldReadonly from '../ChampsUISimples/TextFieldReadonly';
+import Erreur from '../ChampsUISimples/Erreur';
 
 export default function InfosBdd() {
 
@@ -34,7 +35,7 @@ export default function InfosBdd() {
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <Erreur libelleErreur={error.message} />;
     }
     return (
         <div>

@@ -1,9 +1,17 @@
 ﻿import './ChampsUISimples.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function BlocData({ ligne1, ligne2, image, altImage, urlDestination }) {
+export default function BlocData({ ligne1, ligne2, image, altImage, urlDestination, couleurStatut }) {
 
     const navigate = useNavigate();
+
+    function CouleurStatut() {
+        if (couleurStatut === undefined) {
+            return null;
+        }
+
+        return <div className='blocdata_statut' style={{ backgroundColor: couleurStatut }}></div>
+    }
 
     function Image() {
         if (image === undefined) {
@@ -25,6 +33,7 @@ export default function BlocData({ ligne1, ligne2, image, altImage, urlDestinati
         if (urlDestination === undefined) {
             return (
                 <button className='blocdata_bouton' type="button">
+                    <CouleurStatut />
                     <Image />
                     <Texte />
                 </button>
@@ -33,6 +42,7 @@ export default function BlocData({ ligne1, ligne2, image, altImage, urlDestinati
 
         return (
             <button className='blocdata_bouton' type="button" onClick={() => navigate(`${urlDestination}`)} >
+                <CouleurStatut />
                 <Image />
                 <Texte />
             </button>

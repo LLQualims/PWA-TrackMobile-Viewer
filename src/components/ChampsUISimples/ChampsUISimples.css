@@ -42,3 +42,31 @@
     border-radius: 10px;
     overflow: hidden;
 }
+.blocdata_statut {
+    height: 100px;
+    width: 8px;
+}
+
+/* Erreur */
+.erreur_div {
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    background-color: rgba(255, 0, 0, 0.2);
+    width: 75%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+}
+.erreur_titre {
+    font-weight: bold;
+    margin-left: 50px;
+}
+.erreur_detail {
+    margin-left: 10px;
+}
+
