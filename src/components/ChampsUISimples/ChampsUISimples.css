@@ -1,0 +1,44 @@
+﻿/* TextFieldReadonly */
+.textfieldreadonly_div {
+    margin:10px;
+    margin-bottom: 20px;
+}
+.textfieldreadonly_textfield {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* BlocData */
+.blocdata_image {
+    width: 7%;
+    padding: 1%;
+}
+.blocdata_div {
+    text-align: left;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.blocdata_ligne1 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.blocdata_ligne2 {
+    color: #9e9e9e;
+    margin-top: 1px;
+    font-size: smaller;
+}
+.blocdata_bouton {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    background-color: rgba(219, 219, 219, 0.586);
+    width: 75%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
