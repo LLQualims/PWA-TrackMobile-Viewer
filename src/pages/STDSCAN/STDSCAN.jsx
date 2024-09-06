@@ -52,47 +52,59 @@ const ScanPage = () => {
 
   // Recherche selon Numéro Appareil
   const VerifNumAppareil = async () => {
-    const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/numero`, {
-      headers: {
-        NumeroAppareil: `${searchTerm}`,
-         Authorization: `Bearer ${localStorage.getItem('Token')}`
+    try{
+      const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/numero`, {
+        headers: {
+          NumeroAppareil: `${searchTerm}`,
+           Authorization: `Bearer ${localStorage.getItem('Token')}`
+        }
+      });
+      if (response.data.contenu.length === 1) {
+        navigate(`/appareils/${response.data.contenu[0].numeroAppareil}`,{ state: { idappAppareil: response.data.contenu[0].idappAppareil } })
+      } else {
+        setinvalidTerm(true);
       }
-    });
-    if (response.data.contenu.length === 1) {
-      navigate(`/appareils/${response.data.contenu[0].numeroAppareil}`,{ state: { idappAppareil: response.data.contenu[0].idappAppareil } })
-    } else {
-      setinvalidTerm(true);
+    }catch{
+      setinvalidTerm(true)
     }
   };
 
-
   // Recherche selon ID Appareil
   const VerifIDAppareil = async () => {
-    const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/${searchTerm}`, {
-      headers: {
-         Authorization: `Bearer ${localStorage.getItem('Token')}`
+    try{
+      const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/${searchTerm}`, {
+        headers: {
+           Authorization: `Bearer ${localStorage.getItem('Token')}`
+        }
+      });
+      if (response.data.codeEtat === 200) {
+        navigate(`/appareils/${response.data.contenu.numeroAppareil}`,{ state: { idappAppareil: response.data.contenu.idappAppareil } })
+      } else {
+        setinvalidTerm(true);
       }
-    });
-    if (response.data.codeEtat === 200) {
-      navigate(`/appareils/${response.data.contenu.numeroAppareil}`,{ state: { idappAppareil: response.data.contenu.idappAppareil } })
-    } else {
+    }catch{
       setinvalidTerm(true);
     }
   };
 
   // Recherche selon Numéro Conditionnement
   const VerifNumConditionnement = async () => {
-    const response = await axios.get(`${localStorage.getItem("URLServeur")}/lar/conditionnement/numero`, {
-      headers: {
-        NumeroConditionnement: `${searchTerm}`,
-         Authorization: `Bearer ${localStorage.getItem('Token')}`
+    try{
+      const response = await axios.get(`${localStorage.getItem("URLServeur")}/lar/conditionnement/numero`, {
+        headers: {
+          NumeroConditionnement: `${searchTerm}`,
+           Authorization: `Bearer ${localStorage.getItem('Token')}`
+        }
+      });
+      if (response.data.contenu.length === 1) {
+        navigate(`/conditionnements/${response.data.contenu[0].numConditionnement}`)
+      } else {
+        setinvalidTerm(true);
       }
-    });
-    if (response.data.contenu.length === 1) {
-      navigate(`/conditionnements/${response.data.contenu[0].numConditionnement}`)
-    } else {
+    }catch{
       setinvalidTerm(true);
     }
+    
   };
 
   return (
