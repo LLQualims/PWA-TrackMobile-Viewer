@@ -7,7 +7,7 @@
   z-index: 1000;
   width: 100%;
   position: fixed;
-  background-color: white;
+  background-color: transparent;
 }
 
 .menu-onglets{
@@ -29,7 +29,7 @@
 .btn-retour{
   border: none;
   cursor: pointer;
-  background-color: white;
+  background-color: transparent;
 }
 
 
