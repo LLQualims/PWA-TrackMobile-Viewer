@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const FenPrincipale = () => {
 
+    // Variables globales
+    global.VersionApplication = "1.0.0.0";
+
   const navigate = useNavigate();
 
   return (

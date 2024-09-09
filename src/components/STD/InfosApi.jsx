@@ -39,9 +39,9 @@ export default function InfosBdd() {
     }
     return (
         <div>
-            <TextFieldReadonly libelle='Version du serveur dAPI' valeur={dataApi.Version}></TextFieldReadonly>
-            <TextFieldReadonly libelle='URL du serveur' valeur={localStorage.getItem("URLServeur")}></TextFieldReadonly>
-            <TextFieldReadonly libelle='Nom de lapplication' valeur='Track Mobile Viewer'></TextFieldReadonly>
+            <TextFieldReadonly libelle="Version du serveur d'API" valeur={dataApi.Version}></TextFieldReadonly>
+            <TextFieldReadonly libelle="URL du serveur" valeur={localStorage.getItem("URLServeur")}></TextFieldReadonly>
+            <TextFieldReadonly libelle="Nom de l'application" valeur='Track Mobile Viewer'></TextFieldReadonly>
         </div>
     );
 }
