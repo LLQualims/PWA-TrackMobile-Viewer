@@ -37,6 +37,7 @@ function App() {
                 <Route path="/appareils/:idappAppareil" element={<ProtectedRoute><APPAPFIC /></ProtectedRoute>} />
                 <Route path="/appareils/:idappAppareil/operations/:idappOperation" element={<ProtectedRoute><APPOPFIC /></ProtectedRoute>} />
                 <Route path="*" element={<ProtectedRoute><STDERREUR/></ProtectedRoute>} />
+                <Route path="/conditionnements/:idlarConditionnement" element={<ProtectedRoute><LARCOFIC /></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     </ThemeProvider>  
