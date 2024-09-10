@@ -40,6 +40,7 @@ function App() {
                 <Route path="/appareils/:idappAppareil/operations/:idappOperation" element={<ProtectedRoute><APPOPFIC /></ProtectedRoute>} />
                 <Route path="/conditionnements/:idlarConditionnement/operations/:idlarOperationCO" element={<ProtectedRoute><LAROPFIC /></ProtectedRoute>} />
                 <Route path="*" element={<ProtectedRoute><STDERREUR/></ProtectedRoute>} />
+                <Route path="/conditionnements/:idlarConditionnement" element={<ProtectedRoute><LARCOFIC /></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     </ThemeProvider>  

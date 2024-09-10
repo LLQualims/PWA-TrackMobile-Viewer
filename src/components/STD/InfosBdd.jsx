@@ -89,7 +89,7 @@ export default function InfosBdd() {
     return (
         <div>
             <TextFieldReadonly libelle='Propriétaire' valeur={DataEnvSite ? DataEnvSite.designationSite : ''}></TextFieldReadonly>
-            <TextFieldReadonly libelle='Licence' valeur=''></TextFieldReadonly>
+            <TextFieldReadonly libelle='Licence' valeur={licence}></TextFieldReadonly>
             <TextFieldReadonly libelle='Base' valeur={dataBdd.Moteur_Instance}></TextFieldReadonly>
             <TextFieldReadonly libelle='Source' valeur={dataBdd.Nom_Bdd}></TextFieldReadonly>
             <TextFieldReadonly libelle='Utilisateur' valeur={dataBdd.Utilisateur_Instance}></TextFieldReadonly>
