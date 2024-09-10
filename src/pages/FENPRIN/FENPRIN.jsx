@@ -2,7 +2,7 @@ import React from 'react';
 import './FENPRIN.css';
 import { useNavigate } from 'react-router-dom';
 
-const FenPrincipale = () => {
+const STDFENPRIN = () => {
 
     // Variables globales
     global.VersionApplication = "1.0.0.0";
@@ -23,4 +23,4 @@ const FenPrincipale = () => {
   
 };
 
-export default FenPrincipale;
+export default STDFENPRIN;

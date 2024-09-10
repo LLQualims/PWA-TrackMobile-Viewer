@@ -13,7 +13,7 @@ const isBarcodeDetectionSupported = async () => {
   return false;
 };
 
-const FenConnexionServeur = () => {
+const STDConnexionServeur = () => {
 
   const [supported, setSupported] = useState(false);
   const [serverAddress, setServerAddress] = useState('');
@@ -138,4 +138,4 @@ const FenConnexionServeur = () => {
   );
 };
 
-export default FenConnexionServeur;
+export default STDConnexionServeur;

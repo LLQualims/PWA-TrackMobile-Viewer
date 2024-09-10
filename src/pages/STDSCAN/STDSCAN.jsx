@@ -19,7 +19,7 @@ const isIOS = () => {
   return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 };
 
-const ScanPage = () => {
+const STDSCAN = () => {
 
   const [supported, setSupported] = useState(false);
   const [ios, setIos] = useState(false);
@@ -152,4 +152,4 @@ const ScanPage = () => {
   );
 };
 
-export default ScanPage;
+export default STDSCAN;
