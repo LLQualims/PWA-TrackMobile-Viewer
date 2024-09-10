@@ -8,6 +8,7 @@ import FenPrincipale from './pages/FENPRIN/FENPRIN';
 import FenConnexionServeur from './pages/STDConnexionServeur/STDConnexionServeur';
 import STDApropos from './pages/STDApropos/STDAPropos';
 import APPAPFIC from './pages/APPAPFIC/APPAPFIC';
+import LARCOFIC from './pages/LARCOFIC/LARCOFIC';
 import STDLogin from './pages/STDLOGIN/STDLOGIN';
 import NotFound from './pages/ERREUR/NotFound';
 
@@ -31,6 +32,7 @@ function App() {
                 <Route path="*" element={<ProtectedRoute><NotFound/></ProtectedRoute>} />
                 <Route path="/scan" element={<ProtectedRoute><BarcodeReader /></ProtectedRoute>} />
                 <Route path="/appareils/:idappAppareil" element={<ProtectedRoute><APPAPFIC /></ProtectedRoute>} />
+                <Route path="/conditionnements/:idlarConditionnement" element={<ProtectedRoute><LARCOFIC /></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     </ThemeProvider>  
