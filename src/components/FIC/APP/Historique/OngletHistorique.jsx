@@ -8,7 +8,7 @@ import BlocData from '../../../ChampsUISimples/BlocData';
 import Erreur from '../../../ChampsUISimples/Erreur';
 
 
-const HistoriqueList = (props) => {
+const APPAPFIC_OngletHistorique = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -108,4 +108,4 @@ const HistoriqueList = (props) => {
   );
 };
 
-export default HistoriqueList;
+export default APPAPFIC_OngletHistorique;

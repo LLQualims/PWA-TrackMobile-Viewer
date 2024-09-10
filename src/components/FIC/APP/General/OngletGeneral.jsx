@@ -5,7 +5,7 @@ import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import Erreur from '../../../ChampsUISimples/Erreur';
 import './OngletGeneral.css'
 
-const DATFIC = (props) => {
+const APPAPFIC_OngletGeneral = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,15 +13,14 @@ const DATFIC = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-          const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/numero`,  {
+          const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/${props.id}`,  {
           headers: {
                   Authorization: `Bearer ${localStorage.getItem('Token')}`,
-                  NumeroAppareil: `${props.numero}`,
                   SousEntites: '1'
           }
         });
 
-        if (Array.isArray(response.data.contenu)) {
+          if (response.data.contenu && typeof response.data.contenu === 'object') {
           setData(response.data.contenu);
         } else {
           throw new Error('Les données récupérées ne sont pas un tableau');
@@ -47,34 +46,32 @@ const DATFIC = (props) => {
         {loading ? (
                 <CircularProgress />
             ) : (
-        data.map((item) => (
             <div className='infosgeneral'>
                 <div id="statut">
-                    <img id="img_statut_fond" src={require(`../../../../assets/Images/STD_Statut${item.idappStatut}-128-1.png`)} alt="Statut" />
+                    <img id="img_statut_fond" src={require(`../../../../assets/Images/STD_Statut${data.idappStatut}-128-1.png`)} alt="Statut" />
                     <img id="img_statut_etat" className="superpose" src={require(`../../../../assets/Images/APP_Etat7-72-1.png`)} />
-                    <p id="txt_statut_texte" className="superpose">{item.appStatut ? item.appStatut.designationStatut : ""}</p>
+                    <p id="txt_statut_texte" className="superpose">{data.appStatut ? data.appStatut.designationStatut : ""}</p>
                 </div>
 
                 <div>
-                    <TextFieldReadonly libelle="Famille" valeur={item.appFamille ? item.appFamille.designationFamille : ""} />
-                    <TextFieldReadonly libelle="Numéro Appareil" valeur={item.numeroAppareil} />
-                    <TextFieldReadonly libelle="Désignation Appareil" valeur={item.designationAppareil} />
-                    <TextFieldReadonly libelle="Responsable" valeur={item.responsable ? item.responsable.prenomPersonnel + " " + item.responsable.nomPersonnel : ""} />
-                    <TextFieldReadonly libelle="Localisation" valeur={item.envSalle ? item.envSalle.numeroSalle + " " + item.envSalle.designationSalle : ""} />
-                    <TextFieldReadonly libelle="Prochaine Opération" valeur={item.dateFutureOperation ? new Date(item.dateFutureOperation).toLocaleDateString() : 'N/A'} />
-                    <TextFieldReadonly libelle="Type" valeur={item.appType ? item.appType.designationType : ""} />
-                    <TextFieldReadonly libelle="Date Acquisition" valeur={item.dateAcquisition ? new Date(item.dateAcquisition).toLocaleDateString() : 'N/A'} />
-                    <TextFieldReadonly libelle="Date Mise En Service" valeur={item.dateMiseEnService ? new Date(item.dateMiseEnService).toLocaleDateString() : 'N/A'} />
-                    <TextFieldReadonly libelle="Marque Appareil" valeur={item.marqueAppareil} />
-                    <TextFieldReadonly libelle="Numéro Série" valeur={item.numeroSerie} />
-                    <TextFieldReadonly libelle="Info Étiquette" valeur={item.infoEtiquette} />
-                    <TextFieldReadonly libelle="Remarque" valeur={item.remarqueHTML} />
+                    <TextFieldReadonly libelle="Famille" valeur={data.appFamille ? data.appFamille.designationFamille : ""} />
+                    <TextFieldReadonly libelle="Numéro Appareil" valeur={data.numeroAppareil} />
+                    <TextFieldReadonly libelle="Désignation Appareil" valeur={data.designationAppareil} />
+                    <TextFieldReadonly libelle="Responsable" valeur={data.responsable ? data.responsable.prenomPersonnel + " " + data.responsable.nomPersonnel : ""} />
+                    <TextFieldReadonly libelle="Localisation" valeur={data.envSalle ? data.envSalle.numeroSalle + " " + data.envSalle.designationSalle : ""} />
+                    <TextFieldReadonly libelle="Prochaine Opération" valeur={data.dateFutureOperation ? new Date(data.dateFutureOperation).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="Type" valeur={data.appType ? data.appType.designationType : ""} />
+                    <TextFieldReadonly libelle="Date Acquisition" valeur={data.dateAcquisition ? new Date(data.dateAcquisition).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="Date Mise En Service" valeur={data.dateMiseEnService ? new Date(data.dateMiseEnService).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="Marque Appareil" valeur={data.marqueAppareil} />
+                    <TextFieldReadonly libelle="Numéro Série" valeur={data.numeroSerie} />
+                    <TextFieldReadonly libelle="Info Étiquette" valeur={data.infoEtiquette} />
+                    <TextFieldReadonly libelle="Remarque" valeur={data.remarqueHTML} />
                 </div>
             </div>
-          ))
         )}
     </div>
   );
 };
 
-export default DATFIC;
+export default APPAPFIC_OngletGeneral;

@@ -59,8 +59,8 @@ const ScanPage = () => {
            Authorization: `Bearer ${localStorage.getItem('Token')}`
         }
       });
-      if (response.data.contenu.length === 1) {
-        navigate(`/appareils/${response.data.contenu[0].numeroAppareil}`,{ state: { idappAppareil: response.data.contenu[0].idappAppareil } })
+        if (response.data.contenu.length === 1) {
+            navigate(`/appareils/${response.data.contenu[0].idappAppareil}`)
       } else {
         setinvalidTerm(true);
       }
@@ -78,7 +78,7 @@ const ScanPage = () => {
         }
       });
       if (response.data.codeEtat === 200) {
-        navigate(`/appareils/${response.data.contenu.numeroAppareil}`,{ state: { idappAppareil: response.data.contenu.idappAppareil } })
+          navigate(`/appareils/${response.data.contenu.idappAppareil}`)
       } else {
         setinvalidTerm(true);
       }
@@ -97,7 +97,7 @@ const ScanPage = () => {
         }
       });
       if (response.data.contenu.length === 1) {
-        navigate(`/conditionnements/${response.data.contenu[0].numConditionnement}`)
+        navigate(`/conditionnements/${response.data.contenu[0].idlarConditionnement}`)
       } else {
         setinvalidTerm(true);
       }

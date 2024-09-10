@@ -5,7 +5,7 @@ import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import BlocData from '../../../ChampsUISimples/BlocData';
 import Erreur from '../../../ChampsUISimples/Erreur'
 
-const OngletCaracteristiques = (props) => {
+const APPAPFIC_OngletCaracteristiques = (props) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
@@ -63,4 +63,4 @@ const OngletCaracteristiques = (props) => {
     );
 };
 
-export default OngletCaracteristiques;
+export default APPAPFIC_OngletCaracteristiques;

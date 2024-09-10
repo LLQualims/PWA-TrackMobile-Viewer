@@ -22,17 +22,17 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<ProtectedRoute><FenPrincipale/></ProtectedRoute>} />
-        <Route path="/connexionserveur" element={<ProtectedRoute><FenConnexionServeur/></ProtectedRoute>} />
-        <Route path="/login" element={<ProtectedRoute><STDLogin /></ProtectedRoute>} />
-        <Route path="apropos" element={<ProtectedRoute><STDApropos/></ProtectedRoute>} />
-        <Route path="*" element={<ProtectedRoute><NotFound/></ProtectedRoute>} />
-        <Route path="/scan" element={<ProtectedRoute><BarcodeReader /></ProtectedRoute>} />
-        <Route path="/appareils/:numeroAppareil" element={<ProtectedRoute><APPAPFIC /></ProtectedRoute>} />
-      </Routes>
-    </BrowserRouter>
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<ProtectedRoute><FenPrincipale/></ProtectedRoute>} />
+                <Route path="/connexionserveur" element={<ProtectedRoute><FenConnexionServeur/></ProtectedRoute>} />
+                <Route path="/login" element={<ProtectedRoute><STDLogin /></ProtectedRoute>} />
+                <Route path="apropos" element={<ProtectedRoute><STDApropos/></ProtectedRoute>} />
+                <Route path="*" element={<ProtectedRoute><NotFound/></ProtectedRoute>} />
+                <Route path="/scan" element={<ProtectedRoute><BarcodeReader /></ProtectedRoute>} />
+                <Route path="/appareils/:idappAppareil" element={<ProtectedRoute><APPAPFIC /></ProtectedRoute>} />
+            </Routes>
+        </BrowserRouter>
     </ThemeProvider>  
   );
 }

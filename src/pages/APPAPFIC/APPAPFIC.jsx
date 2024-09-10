@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import DATFIC from '../../components/FIC/APP/General/OngletGeneral';
-import HistoriqueList from '../../components/FIC/APP/Historique/OngletHistorique';
-import OngletCaracteristiques from '../../components/FIC/APP/Caracteristiques/OngletCaracteristiques'
+import { useParams } from 'react-router-dom';
+import APPAPFIC_OngletGeneral from '../../components/FIC/APP/General/OngletGeneral';
+import APPAPFIC_OngletHistorique from '../../components/FIC/APP/Historique/OngletHistorique';
+import APPAPFIC_OngletCaracteristiques from '../../components/FIC/APP/Caracteristiques/OngletCaracteristiques'
 import {Tab, Box,  useMediaQuery, useTheme } from '@mui/material';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import './APPAPFIC.css';
@@ -14,9 +14,7 @@ export default function APPAPFIC(){
 
   const theme = useTheme();
   const navigate = useNavigate();
-  const { numeroAppareil } = useParams();
-  const location = useLocation();
-  const { idappAppareil } = location.state || {};
+  const { idappAppareil } = useParams();
   const [value, setValue] = useState(0);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -26,12 +24,12 @@ export default function APPAPFIC(){
 
   const AfficheTab = () => {
     switch (value) {
-      case 0:
-        return <DATFIC numero={numeroAppareil} />;
+        case 0:
+            return <APPAPFIC_OngletGeneral id={idappAppareil} />;
       case 1:
-        return <HistoriqueList id={idappAppareil}/>;
+            return <APPAPFIC_OngletHistorique id={idappAppareil}/>;
         case 2:
-            return isMobile ? <SwipeableEdgeDrawer ouvre={true} /> : <OngletCaracteristiques id={idappAppareil}/>;
+            return isMobile ? <SwipeableEdgeDrawer ouvre={true} /> : <APPAPFIC_OngletCaracteristiques id={idappAppareil}/>;
       case 3:
         return ;
       case 4:
