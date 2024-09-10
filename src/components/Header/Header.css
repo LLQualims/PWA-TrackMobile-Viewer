@@ -1,0 +1,29 @@
+#titre{
+    width: 30%;
+}
+
+#appbar{
+    position: static;
+    background-color: white;
+    color: black;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    box-shadow: none;
+}
+
+#toolbar{
+    justify-content: center;
+}
+
+#iconbtn{
+    margin-left: 4%;
+    position: absolute;
+    left: 0;
+    color: inherit;
+}
+
+@media screen and (max-width: 1024px) {
+    #titre{
+        width: 60%;
+    }
+}

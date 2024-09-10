@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import BarcodeReader from '../../components/BarcodeReader/BarcodeReader.jsx';
-import { TextField, Button, Box, Toolbar, Typography,Grid } from '@mui/material';
-import TemporaryDrawer from '../../components/Drawer/Drawer.jsx';
+import { TextField, Button, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './STDSCAN.css';
+import Header from '../../components/Header/Header.jsx';
 
 
 const isBarcodeDetectionSupported = async () => {
@@ -52,48 +52,48 @@ const STDSCAN = () => {
 
   // Recherche selon Numéro Appareil
   const VerifNumAppareil = async () => {
-    try{
+    try {
       const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/numero`, {
         headers: {
           NumeroAppareil: `${searchTerm}`,
-           Authorization: `Bearer ${localStorage.getItem('Token')}`
+          Authorization: `Bearer ${localStorage.getItem('Token')}`
         }
       });
-        if (response.data.contenu.length === 1) {
-            navigate(`/appareils/${response.data.contenu[0].idappAppareil}`)
+      if (response.data.contenu.length === 1) {
+        navigate(`/appareils/${response.data.contenu[0].idappAppareil}`)
       } else {
         setinvalidTerm(true);
       }
-    }catch{
+    } catch {
       setinvalidTerm(true)
     }
   };
 
   // Recherche selon ID Appareil
   const VerifIDAppareil = async () => {
-    try{
+    try {
       const response = await axios.get(`${localStorage.getItem("URLServeur")}/app/appareil/${searchTerm}`, {
         headers: {
-           Authorization: `Bearer ${localStorage.getItem('Token')}`
+          Authorization: `Bearer ${localStorage.getItem('Token')}`
         }
       });
       if (response.data.codeEtat === 200) {
-          navigate(`/appareils/${response.data.contenu.idappAppareil}`)
+        navigate(`/appareils/${response.data.contenu.idappAppareil}`)
       } else {
         setinvalidTerm(true);
       }
-    }catch{
+    } catch {
       setinvalidTerm(true);
     }
   };
 
   // Recherche selon Numéro Conditionnement
   const VerifNumConditionnement = async () => {
-    try{
+    try {
       const response = await axios.get(`${localStorage.getItem("URLServeur")}/lar/conditionnement/numero`, {
         headers: {
           NumeroConditionnement: `${searchTerm}`,
-           Authorization: `Bearer ${localStorage.getItem('Token')}`
+          Authorization: `Bearer ${localStorage.getItem('Token')}`
         }
       });
       if (response.data.contenu.length === 1) {
@@ -101,26 +101,16 @@ const STDSCAN = () => {
       } else {
         setinvalidTerm(true);
       }
-    }catch{
+    } catch {
       setinvalidTerm(true);
     }
-    
+
   };
 
   return (
     <div className='STDSCAN'>
-      <Toolbar className='toolbar'>
-        <Grid container alignItems="center" >
-          <Grid item xs={2} display="flex" justifyContent="flex-start" sx={{ alignContent: 'center' }}>
-            <TemporaryDrawer />
-          </Grid>
-          <Grid item xs={8} display="flex" justifyContent="center">
-            <Typography>
-              <img src={require('../../assets/Images/STD_Titre-128-1.png')} className="titre-scan" alt="titre" />
-            </Typography>
-          </Grid>
-        </Grid>
-      </Toolbar>
+
+      <Header nomimage={"STD_Titre-128-1.png"} urlretour={"/"} />
 
       {supported ? (
         <BarcodeReader />
