@@ -71,7 +71,8 @@ console.log(dataOperation);
                         <TextFieldReadonly libelle="Date" valeur={dataOperation.dateOperation ? new Date(dataOperation.dateOperation).toLocaleDateString() : 'N/A'} />
                         <TextFieldReadonly libelle="Heure" valeur={`${dataOperation.heureOperation.slice(0, 2)}:${dataOperation.heureOperation.slice(2, 4)}:${dataOperation.heureOperation.slice(4, 6)}`} />
                         <TextFieldReadonly libelle="Intervenant" valeur={dataOperation.nomIntervenant} />
-                        <TextFieldReadonly libelle="Remarque" valeur={dataOperation.remarqueAChaud} />
+                        <TextFieldReadonly libelle="Remarque" valeur={dataOperation.remarqueAChaudHTML} />
+                        <div dangerouslySetInnerHTML={{ __html: dataOperation.remarqueAChaudHTML }} />
                     </div>
                 </div>
             )}

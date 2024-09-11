@@ -9,7 +9,9 @@ export default function TextFieldReadonly({ libelle, valeur }) {
                 className="textfieldreadonly_textfield"
                 inputProps={{ readOnly: true }}
                 label={libelle}
+                multiline
                 defaultValue={valeur} />
+                
         </div>
     );
 };
