@@ -1,103 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import APPAPFIC_OngletGeneral from '../../components/FIC/APP/General/OngletGeneral';
-import APPAPFIC_OngletHistorique from '../../components/FIC/APP/Historique/OngletHistorique';
-import APPAPFIC_OngletCaracteristiques from '../../components/FIC/APP/Caracteristiques/OngletCaracteristiques'
-import {Tab, Box,  useMediaQuery, useTheme } from '@mui/material';
-import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import './APPAPFIC.css';
-import SwipeableEdgeDrawer from '../../components/Drawer/OngletAutre';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { useNavigate } from 'react-router-dom';
 
-export default function APPAPFIC(){
+import MenuOnglets from '../../components/FIC/APP/MenuOnglets/MenuOnglets';
 
-  const theme = useTheme();
-  const navigate = useNavigate();
+export default function APPAPFIC() {
+
   const { idappAppareil } = useParams();
-  const [value, setValue] = useState(0);
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const allTabs = ['Général', 'Historique', 'Caractéristiques', 'Détails', 'Chaînage', 'Classeurs'];
-  const mobileTabs = ['Général', 'Historique', 'Autres'];
-  const tabsToShow = isMobile ? mobileTabs : allTabs;
-
-  const AfficheTab = () => {
-    switch (value) {
-        case 0:
-            return <APPAPFIC_OngletGeneral id={idappAppareil} />;
-      case 1:
-            return <APPAPFIC_OngletHistorique id={idappAppareil}/>;
-        case 2:
-            return isMobile ? <SwipeableEdgeDrawer ouvre={true} /> : <APPAPFIC_OngletCaracteristiques id={idappAppareil}/>;
-      case 3:
-        return ;
-      case 4:
-        return ;
-      case 5:
-        return ;
-      default:
-        return null;
-    }
-  };
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   return (
-    <>
-    <div className='header-onglet'>
-      <div className='header'>
-        <button className='btn-retour' onClick={() => navigate('/scan')}>
-          <ArrowBackIosNewIcon/>
-        </button>
-        <img src={require("../../assets/Images/APP_Titre-128-1.png")} className="titre" alt="titre" />
+      <div>
+        <MenuOnglets idappAppareil={idappAppareil}/>
       </div>
-     
-      <Box className="menu-onglets" sx={{ color:'EQM.main', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "25px"}}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons
-          textColor="black"
-          indicatorColor="primary"
-          TabIndicatorProps={{
-            style: {
-              height: '3px',
-            },
-          }}
-          sx={{
-            [`& .${tabsClasses.scrollButtons}`]: {
-              '&.Mui-disabled': { opacity: 0.3 },
-            },
-            '.MuiTab-root': {
-              transition: 'none',
-              '&:hover': {
-                transition: 'none',
-              },
-              fontSize: '1.2rem', 
-              marginLeft: '10px',
-              marginRight: '10px'
-            },
-          }}
-        >
-          {tabsToShow.map((label, index) => (
-              <Tab
-                key={index}
-                label={label}
-                sx={{
-                  fontWeight: value === index ? 'bold' : 'normal', color: 'black',textTransform: 'none'
-                }}
-              />
-            ))}
-        </Tabs>
-      </Box>
-    </div>
+  )
 
-
-      <div className="content">{AfficheTab()}</div> 
-    </>
-  )    
-  
 }
