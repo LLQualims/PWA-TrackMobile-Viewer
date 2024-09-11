@@ -16,7 +16,9 @@ const Header = ({ nomimage, urlretour }) => {
             <AppBar id="appbar">
                 <Toolbar id="toolbar">
                     <IconButton id="iconbtn" aria-label="retour">
-                        <ArrowBackIosNew onClick={() => navigate(`${urlretour}`)} />
+                        <ArrowBackIosNew onClick={() => {
+                            localStorage.removeItem('activeTabAPPAPFIC');
+                            navigate(`${urlretour}`);}} />
                     </IconButton>
                     <img src={require(`../../assets/Images/${nomimage}`)} id="titre" alt="titre" />
                 </Toolbar>

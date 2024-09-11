@@ -1,22 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../../MenuOnglets.css';
 
 import APPAPFIC_OngletGeneral from '../../../FIC/APP/General/OngletGeneral'
 import APPAPFIC_OngletHistorique from '../../../FIC/APP/Historique/OngletHistorique';
 import APPAPFIC_OngletCaracteristiques from '../../../FIC/APP/Caracteristiques/OngletCaracteristiques'
+import Header from '../../../Header/Header';
+
+import SwipeableViews from 'react-swipeable-views';
 
 import { Tab, Box } from '@mui/material';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
-import Header from '../../../Header/Header';
+
 
 const MenuOnglets = (props) => {
 
-  const [value, setValue] = useState(0);
-
+  const contentRef = useRef(null);
+  const [value, setValue] = useState(() =>{
+    const savedIndex = localStorage.getItem('activeTabAPPAPFIC');
+    return savedIndex !== null ? parseInt(savedIndex, 10) : 0;
+  });
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
+      localStorage.setItem('activeTabAPPAPFIC', newValue);
     };
+
+    const handleSwipeChange = (index) => {
+      setValue(index);
+      localStorage.setItem('activeTabAPPAPFIC', index)
+    };
+
+  useEffect(() =>{
+    if (contentRef.current) {
+      contentRef.current.parentElement.style.height= `${contentRef.current.scrollHeight}px`;
+    }
+  }, [value]);
 
     return (
       <div>
@@ -38,12 +56,20 @@ const MenuOnglets = (props) => {
             </Tabs>
           </Box>
         </div>
+        <SwipeableViews index={value} onChangeIndex={handleSwipeChange} enableMouseEvents>
         <div className='contenu-onglet'>
-          {value === 0 && <APPAPFIC_OngletGeneral id={props.idappAppareil} />}
-          {value === 1 && <APPAPFIC_OngletHistorique id={props.idappAppareil} />}
-          {value === 2 && <APPAPFIC_OngletCaracteristiques id={props.idappAppareil} />}
-          {value === 3 && <div>Détails</div>}
+          <APPAPFIC_OngletGeneral id={props.idappAppareil} />
         </div>
+        <div className='contenu-onglet'>
+          <APPAPFIC_OngletHistorique id={props.idappAppareil} />
+        </div>
+        <div className='contenu-onglet'>
+          <APPAPFIC_OngletCaracteristiques id={props.idappAppareil} />
+        </div>
+        <div className='contenu-onglet'>
+          <div>Détails</div>
+        </div>
+      </SwipeableViews>
       </div>
     )
 };
