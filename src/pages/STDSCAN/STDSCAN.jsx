@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './STDSCAN.css';
 import Header from '../../components/Header/Header.jsx';
-
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const isBarcodeDetectionSupported = async () => {
   if ('BarcodeDetector' in window) {
@@ -25,6 +26,7 @@ const STDSCAN = () => {
   const [ios, setIos] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [invalidTerm, setinvalidTerm] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,14 +42,20 @@ const STDSCAN = () => {
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+    setinvalidTerm(false);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    VerifNumAppareil();
-    VerifIDAppareil();
-    VerifNumConditionnement();
+    setLoading(true);
+    try{
+      VerifNumAppareil();
+      VerifIDAppareil();
+      VerifNumConditionnement();
+    } catch {}
+    finally{
+      setLoading(false);
+    }
   };
 
   // Recherche selon Numéro Appareil
@@ -62,10 +70,8 @@ const STDSCAN = () => {
       if (response.data.contenu.length === 1) {
         navigate(`/appareils/${response.data.contenu[0].idappAppareil}`)
       } else {
-        setinvalidTerm(true);
       }
     } catch {
-      setinvalidTerm(true)
     }
   };
 
@@ -80,10 +86,8 @@ const STDSCAN = () => {
       if (response.data.codeEtat === 200) {
         navigate(`/appareils/${response.data.contenu.idappAppareil}`)
       } else {
-        setinvalidTerm(true);
       }
     } catch {
-      setinvalidTerm(true);
     }
   };
 
@@ -111,6 +115,10 @@ const STDSCAN = () => {
     <div className='STDSCAN'>
 
       <Header nomimage={"STD_Titre-128-1.png"} urlretour={"/"} />
+
+      <Backdrop open={loading} style={{ zIndex: 1000 }}>
+        <CircularProgress />
+      </Backdrop>
 
       {supported ? (
         <BarcodeReader />
