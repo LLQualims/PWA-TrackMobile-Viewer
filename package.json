@@ -2,7 +2,6 @@
   "name": "pwatrackmobile",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://QualimsDev.github.io/PWA-TrackMobile-Viewer",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -23,9 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predebloy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

@@ -28,13 +28,13 @@ function App() {
     <ThemeProvider theme={theme}>
         <BrowserRouter>
             <Routes>
-                <Route index element={<ProtectedRoute><STDFENPRIN/></ProtectedRoute>} />
+                <Route path="/" element={<ProtectedRoute><STDFENPRIN/></ProtectedRoute>} />
                 <Route path="/connexionserveur" element={<ProtectedRoute><STDConnexionServeur/></ProtectedRoute>} />
                 <Route path="/login" element={<ProtectedRoute><STDLogin /></ProtectedRoute>} />
                 <Route path="apropos" element={<ProtectedRoute><STDApropos/></ProtectedRoute>} />
-                <Route path="*" element={<ProtectedRoute><STDERREUR/></ProtectedRoute>} />
                 <Route path="/scan" element={<ProtectedRoute><STDSCAN /></ProtectedRoute>} />
                 <Route path="/appareils/:idappAppareil" element={<ProtectedRoute><APPAPFIC /></ProtectedRoute>} />
+                <Route path="*" element={<ProtectedRoute><STDERREUR/></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     </ThemeProvider>  
