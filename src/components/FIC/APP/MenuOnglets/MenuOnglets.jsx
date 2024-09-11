@@ -52,7 +52,6 @@ const MenuOnglets = (props) => {
               <Tab label="Général" />
               <Tab label="Historique" />
               <Tab label="Caractéristiques" />
-              <Tab label="Détails" />
             </Tabs>
           </Box>
         </div>
@@ -65,9 +64,6 @@ const MenuOnglets = (props) => {
         </div>
         <div className='contenu-onglet'>
           <APPAPFIC_OngletCaracteristiques id={props.idappAppareil} />
-        </div>
-        <div className='contenu-onglet'>
-          <div>Détails</div>
         </div>
       </SwipeableViews>
       </div>
