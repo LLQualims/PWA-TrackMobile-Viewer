@@ -13,9 +13,7 @@ export default function APPOPFIC() {
 
     const [error, setError] = useState(null);
     const [dataOperation, setDataOperation] = useState(null);
-    const [dataStatut, setDataStatut] = useState(null);
     const [loadingOperation, setLoadingOperation] = useState(true);
-    const [loadingStatut, setLoadingStatut] = useState(true);
     const { idappAppareil, idappOperation } = useParams();
     useEffect(() => {
         const fetchDataOperation = async () => {
@@ -42,44 +40,15 @@ export default function APPOPFIC() {
         fetchDataOperation();
     }, [idappOperation]);
 
-    // Fetch status data, after operation data is available
-    useEffect(() => {
-        if (dataOperation && dataOperation.appAppareil && dataOperation.appAppareil.idappStatut) {
-            const fetchDataStatut = async () => {
-                try {
-                    const responseStatut = await axios.get(`${localStorage.getItem("URLServeur")}/app/statut/${dataOperation.idappStatut}`, {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem('Token')}`,
-                            SousEntites: '1'
-                        }
-                    });
-
-                    if (responseStatut.data.contenu && typeof responseStatut.data.contenu === 'object') {
-                        setDataStatut(responseStatut.data.contenu);
-                    } else {
-                        throw new Error('Les données récupérées ne sont pas un object');
-                    }
-                } catch (err) {
-                    setError(err);
-                } finally {
-                    setLoadingStatut(false);
-                }
-            };
-
-            fetchDataStatut();
-        }
-    }, [dataOperation]);
-
-
 
     if (error) {
         return <Erreur libelleErreur={error.message} />;
     }
-
+console.log(dataOperation);
     return (
         <>
             <Header nomimage={"APP_Titre-128-1.png"} urlretour={`/appareils/${idappAppareil}`} />
-            { (loadingOperation || loadingStatut) ? (
+            { (loadingOperation) ? (
                 <CircularProgress />
             ) : (
                 <div id='contenu'>
@@ -88,12 +57,13 @@ export default function APPOPFIC() {
                             <img id="image" src={getImageOperation(dataOperation.idappNatureOperation, dataOperation.appNatureOperation.nomImage)} alt="Opération" />
                             <p>{dataOperation.appNatureOperation.designationNatureOperation}</p>
                         </div>
+
+                    {dataOperation.idappStatut !== 0 &&(
                         <div id="image-statut">
                             <img id="image" src={require(`../../assets/Images/APP_Statut${dataOperation.idappStatut}-128-1.png`)} alt="Statut" />
-                            <p>{dataStatut.designationStatut}</p>
-                        </div>
-                        
-                       
+                            <p>{dataOperation.appStatut.designationStatut}</p>
+                        </div> 
+                         )}                 
                     </div>
 
                     <div>
