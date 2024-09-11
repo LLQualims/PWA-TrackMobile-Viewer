@@ -12,6 +12,7 @@ import STDSCAN from './pages/STDSCAN/STDSCAN';
 import STDERREUR from './pages/ERREUR/STDERREUR';
 // APP
 import APPAPFIC from './pages/APPAPFIC/APPAPFIC';
+import APPOPFIC from './pages/APPOPFIC/APPOPFIC';
 
 
 // Components
@@ -34,6 +35,7 @@ function App() {
                 <Route path="apropos" element={<ProtectedRoute><STDApropos/></ProtectedRoute>} />
                 <Route path="/scan" element={<ProtectedRoute><STDSCAN /></ProtectedRoute>} />
                 <Route path="/appareils/:idappAppareil" element={<ProtectedRoute><APPAPFIC /></ProtectedRoute>} />
+                <Route path="/appareils/:idappAppareil/operations/:idappOperation" element={<ProtectedRoute><APPOPFIC /></ProtectedRoute>} />
                 <Route path="*" element={<ProtectedRoute><STDERREUR/></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>

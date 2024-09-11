@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import './STDERREUR.css'
 
 export default function STDERREUR() {
 
@@ -9,7 +10,7 @@ export default function STDERREUR() {
     return (
         <div className='STDAPropos'>
             <div className='header'>
-                <button className='btn-retour' onClick={() => navigate('/')}>
+                <button id='btn-retour' onClick={() => navigate('/')}>
                     <ArrowBackIosNewIcon/>
                 </button>
             </div>

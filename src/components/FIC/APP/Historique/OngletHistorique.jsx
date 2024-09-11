@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import BlocData from '../../../ChampsUISimples/BlocData';
 import Erreur from '../../../ChampsUISimples/Erreur';
-
+import {getImageOperation} from '../../../../outils/Image.js';
 
 const APPAPFIC_OngletHistorique = (props) => {
   const [loading, setLoading] = useState(true);
@@ -51,28 +51,6 @@ const APPAPFIC_OngletHistorique = (props) => {
         return <Erreur libelleErreur={error.message } />;
   }
 
-  
-    const getImageOperation = (idappNatureOperation, nomImage) => {
-      let img = nomImage;
-      
-      switch(idappNatureOperation) {
-        case 1: case 2:
-          return require('../../../../assets/Images/APP_Acquisition-128-1.png');
-        case 90: case 98:
-          return require('../../../../assets/Images/APP_Derogation-128-1.png');
-        case 94:
-          return require('../../../../assets/Images/APP_MiseHorsService-128-1.png');
-        case 95:
-          return require('../../../../assets/Images/APP_RemiseEnService-128-1.png');
-        case 96:
-          return require('../../../../assets/Images/APP_MiseEnReserve-128-1.png');
-        case 97:
-          return require('../../../../assets/Images/APP_MiseAuRebut-128-1.png');
-        default:
-          return require(`../../../../assets/Images/${img.replace("XX-X.XXX", "128-1.png")}`);
-      }
-    };
-
     const getCouleurWindev = (color) => {
         const bleu = Math.floor(color / 65536);
         const vert = Math.floor((color - (bleu * 65536)) / 256);
@@ -95,11 +73,12 @@ const APPAPFIC_OngletHistorique = (props) => {
           ) : (
               data.map((item) => (
                   <BlocData
-                      image={getImageOperation(item.idappNatureOperation, item.appNatureOperation.nomImage)}
-                      altImage={`Image of ${item.idappNatureOperation}`}
-                      ligne1={item.appNatureOperation.designationNatureOperation}
-                      ligne2={`${new Date(item.dateOperation).toLocaleDateString()} ${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}
-                      couleurStatut={getCouleurWindev(item.appStatut?.couleur)}
+                    image={getImageOperation(item.idappNatureOperation, item.appNatureOperation.nomImage)}
+                    altImage={`Image of ${item.idappNatureOperation}`}
+                    ligne1={item.appNatureOperation.designationNatureOperation}
+                    ligne2={`${new Date(item.dateOperation).toLocaleDateString()} ${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}
+                    couleurStatut={getCouleurWindev(item.appStatut?.couleur)}
+                    urlDestination={`/appareils/${props.id}/operations/${item.idappOperation}`}
                   />
         ))
       )}
