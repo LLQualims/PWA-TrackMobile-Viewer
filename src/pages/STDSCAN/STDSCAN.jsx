@@ -48,6 +48,7 @@ const STDSCAN = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    localStorage.removeItem('activeTabAPPAPFIC');
     try{
       VerifNumAppareil();
       VerifIDAppareil();
