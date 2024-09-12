@@ -3,6 +3,8 @@ import './ChampsUISimples.css';
 
 export default function TextFieldReadonly({ libelle, valeur }) {
 
+    if (valeur === undefined || valeur === '') { valeur = " "; }
+
     return (
         <div className="textfieldreadonly_div">
             <TextField
