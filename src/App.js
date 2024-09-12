@@ -14,6 +14,8 @@ import STDERREUR from './pages/ERREUR/STDERREUR';
 import APPAPFIC from './pages/APPAPFIC/APPAPFIC';
 import APPOPFIC from './pages/APPOPFIC/APPOPFIC';
 
+//LAR
+import LAROPFIC from './pages/LAROPFIC/LAROPFIC';
 
 // Components
 import ProtectedRoute from './components/ProtetedRoute';
@@ -36,6 +38,7 @@ function App() {
                 <Route path="/scan" element={<ProtectedRoute><STDSCAN /></ProtectedRoute>} />
                 <Route path="/appareils/:idappAppareil" element={<ProtectedRoute><APPAPFIC /></ProtectedRoute>} />
                 <Route path="/appareils/:idappAppareil/operations/:idappOperation" element={<ProtectedRoute><APPOPFIC /></ProtectedRoute>} />
+                <Route path="/conditionnements/:idlarConditionnement/operations/:idlarOperationCO" element={<ProtectedRoute><LAROPFIC /></ProtectedRoute>} />
                 <Route path="*" element={<ProtectedRoute><STDERREUR/></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
