@@ -73,4 +73,49 @@
     .textfieldreadonly_textfield{
         width: 90%;
     }
+}   
+
+/* Bloc5Images */
+.bloc5images_div {
+    width: 370px;
+    margin-bottom: 200px;
+    display: inline-block;
+}
+.bloc5images_textfield {
+    width: 100%;
+    height: 0;
+}
+.bloc5images_divimages {
+    height: 100%;
+    position: relative;
+}
+.bloc5images_img1 {
+    top: 0%;
+    left: 5%;
+    height: 100%;
+    position: absolute;
+}
+.bloc5images_img2 {
+    top: 0%;
+    left: 29%;
+    height: 100%;
+    position: relative;
+}
+.bloc5images_img3 {
+    top: 140%;
+    left: 5%;
+    height: 100%;
+    position: absolute;
+}
+.bloc5images_img4 {
+    top: 140%;
+    left: 60%;
+    height: 100%;
+    position: absolute;
+}
+.bloc5images_img5 {
+    top: 70%;
+    left: 33%;
+    height: 100%;
+    position: absolute;
 }
