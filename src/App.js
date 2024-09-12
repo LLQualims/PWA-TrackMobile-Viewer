@@ -13,9 +13,8 @@ import STDERREUR from './pages/ERREUR/STDERREUR';
 // APP
 import APPAPFIC from './pages/APPAPFIC/APPAPFIC';
 import APPOPFIC from './pages/APPOPFIC/APPOPFIC';
-
-//LAR
-import LAROPFIC from './pages/LAROPFIC/LAROPFIC';
+// LAR
+import LARCOFIC from './pages/LARCOFIC/LARCOFIC';
 
 // Components
 import ProtectedRoute from './components/ProtetedRoute';
