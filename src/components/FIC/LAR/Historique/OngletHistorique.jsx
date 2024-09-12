@@ -1,5 +1,6 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { getCouleurWindev } from '../../../../outils/style'
 import '../../APP/Historique/OngletHistorique.css';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -49,16 +50,6 @@ const LARCOFIC_OngletHistorique = (props) => {
         return <Erreur libelleErreur={error.message} />;
     }
 
-    const getCouleurWindev = (color) => {
-        console.log(color);
-        const bleu = Math.floor(color / 65536);
-        const vert = Math.floor((color - (bleu * 65536)) / 256);
-        const rouge = color - (bleu * 65536) - (vert * 256);
-
-        // Retourne la couleur au format rgb
-        return `rgb(${rouge}, ${vert}, ${bleu})`;
-    };
-
     const getImageOperation = (idlarNatureOperation, nomImage) => {
         let img = nomImage;
 
@@ -85,6 +76,7 @@ const LARCOFIC_OngletHistorique = (props) => {
                         ligne1={item.larNatureOperationCO.designationNatureOperation}
                         ligne2={`${new Date(item.dateOperation).toLocaleDateString()} ${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}
                         couleurStatut={getCouleurWindev(item.larStatutCO?.couleur)}
+                        urlDestination={`/conditionnements/${props.id}/operations/${item.idlarOperationCO}`}
                     />
                 ))
             )}

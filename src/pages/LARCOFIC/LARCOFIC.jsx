@@ -1,9 +1,17 @@
-﻿import { useParams } from 'react-router-dom';
-import LARCOFIC_OngletHistorique from "../../components/FIC/LAR/Historique/OngletHistorique";
-import LARCOFIC_OngletCaracteristiques from '../../components/FIC/LAR/Caracteristiques/OngletCaracteristiques';
+﻿import React from 'react';
+import { useParams } from 'react-router-dom';
+import './LARCOFIC.css';
+
+import MenuOnglets from '../../components/FIC/LAR/MenuOnglets/MenuOnglets';
 
 export default function LARCOFIC() {
+
     const { idlarConditionnement } = useParams();
 
-    return <LARCOFIC_OngletCaracteristiques id={idlarConditionnement} />;
+    return (
+        <div>
+            <MenuOnglets idlarConditionnement={idlarConditionnement} />
+        </div>
+    )
+
 }

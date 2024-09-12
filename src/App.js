@@ -15,6 +15,7 @@ import APPAPFIC from './pages/APPAPFIC/APPAPFIC';
 import APPOPFIC from './pages/APPOPFIC/APPOPFIC';
 // LAR
 import LARCOFIC from './pages/LARCOFIC/LARCOFIC';
+import LAROPFIC from './pages/LAROPFIC/LAROPFIC';
 
 // Components
 import ProtectedRoute from './components/ProtetedRoute';

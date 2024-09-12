@@ -6,7 +6,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import BlocData from '../../../ChampsUISimples/BlocData';
 import Erreur from '../../../ChampsUISimples/Erreur';
-import {getImageOperation} from '../../../../outils/Image.js';
+import { getImageOperation } from '../../../../outils/Image.js';
+import { getCouleurWindev } from '../../../../outils/style'
 
 const APPAPFIC_OngletHistorique = (props) => {
   const [loading, setLoading] = useState(true);
@@ -50,15 +51,6 @@ const APPAPFIC_OngletHistorique = (props) => {
     if (error) {
         return <Erreur libelleErreur={error.message } />;
   }
-
-    const getCouleurWindev = (color) => {
-        const bleu = Math.floor(color / 65536);
-        const vert = Math.floor((color - (bleu * 65536)) / 256);
-        const rouge = color - (bleu * 65536) - (vert * 256);
-      
-        // Retourne la couleur au format rgb
-        return `rgb(${rouge}, ${vert}, ${bleu})`;
-    };
 
   return (
     <div className='tab'>
