@@ -3,6 +3,12 @@ import TextField from '@mui/material/TextField'
 
 export default function Bloc5Images({ titre, image1, image2, image3, image4, image5 }) {
 
+    function DonneBaliseImage({ srcImage, classNameCSS, titre }) {
+        if (srcImage === undefined) { return null; }
+
+        return <img src={srcImage} className={classNameCSS} alt={titre} />
+    }
+
     return (
         <div className="bloc5images_div">
             <TextField sx={{ innerHeight: 50 }}
@@ -14,13 +20,13 @@ export default function Bloc5Images({ titre, image1, image2, image3, image4, ima
             </TextField>
 
             <div className="bloc5images_divimages">
-                <img src={image1} className="bloc5images_img1" alt={`${titre} 1`} />
-                <img src={image2} className="bloc5images_img2" alt={`${titre} 2`} />
+                <DonneBaliseImage srcImage={image1} classNameCSS="bloc5images_img1" titre={`${titre} 1`} />
+                <DonneBaliseImage srcImage={image2} classNameCSS="bloc5images_img2" titre={`${titre} 2`} />
 
-                <img src={image3} className="bloc5images_img3" alt={`${titre} 3`} />
+                <DonneBaliseImage srcImage={image3} classNameCSS="bloc5images_img3" titre={`${titre} 3`} />
 
-                <img src={image4} className="bloc5images_img4" alt={`${titre} 4`} />
-                <img src={image5} className="bloc5images_img5" alt={`${titre} 5`} />
+                <DonneBaliseImage srcImage={image4} classNameCSS="bloc5images_img4" titre={`${titre} 4`} />
+                <DonneBaliseImage srcImage={image5} classNameCSS="bloc5images_img5" titre={`${titre} 5`} />
             </div>
         </div>
     );

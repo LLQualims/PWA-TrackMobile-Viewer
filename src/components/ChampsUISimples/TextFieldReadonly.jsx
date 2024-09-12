@@ -10,7 +10,18 @@ export default function TextFieldReadonly({ libelle, valeur }) {
                 inputProps={{ readOnly: true }}
                 label={libelle}
                 multiline
-                defaultValue={valeur} />
+                defaultValue={valeur}
+                sx={{
+                    // change label and border color when readonly
+                    "&:has([readonly]) ": {
+                        "& .MuiInputLabel-outlined": {
+                            color: "#cecece",
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#cecece",
+                        },
+                    },
+                }}            />
                 
         </div>
     );

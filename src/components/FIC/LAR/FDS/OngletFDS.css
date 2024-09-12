@@ -2,10 +2,12 @@
     
 }
 
-.div_dangers {
-    margin-left: 30%;
+.titre_section {
+    background-color: lightblue;
+    text-align: left;
+    padding: 15px;
+    font-weight: bold;
 }
-
-.div_epi {
-    left: 500px;
+.infosgeneral {
+    width: 75%;
 }
