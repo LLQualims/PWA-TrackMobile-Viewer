@@ -43,7 +43,7 @@
     overflow: hidden;
 }
 .blocdata_statut {
-    height: 100px;
+    height: 130px;
     width: 8px;
 }
 
@@ -70,87 +70,56 @@
     margin-left: 10px;
 }
 
+#fleche{
+    width: 50px;
+    margin-left: 70%;
+    position: fixed;
+    height: 50px;
+}
+
 @media screen and (max-width: 1024px) {
     .textfieldreadonly_textfield{
         width: 90%;
     }
     .blocdata_image {
-        width: 20%;
-        padding: 1%;
+        width: 13%;
+        padding-left: 10px;
     }
     .blocdata_bouton {
-        width: 85%;
+        width: 100%;
     }
-}  
-
-/* Bloc5Images */
-.bloc5images_div {
-    width: 370px;
-    margin-bottom: 200px;
-    display: inline-block;
-}
-.bloc5images_textfield {
-    width: 100%;
-    height: 0;
-}
-.bloc5images_divimages {
-    height: 100%;
-    position: relative;
-}
-.bloc5images_img1 {
-    top: 0%;
-    left: 5%;
-    height: 100%;
-    position: absolute;
-}
-.bloc5images_img2 {
-    top: 0%;
-    left: 29%;
-    height: 100%;
-    position: relative;
-}
-.bloc5images_img3 {
-    top: 140%;
-    left: 5%;
-    height: 100%;
-    position: absolute;
-}
-.bloc5images_img4 {
-    top: 140%;
-    left: 60%;
-    height: 100%;
-    position: absolute;
-}
-.bloc5images_img5 {
-    top: 70%;
-    left: 33%;
-    height: 100%;
-    position: absolute;
-}
-
-/* Bloc5ImagesLigne */
-.bloc5imagesligne_div {
-    width: 80%;
-    display: inline-block;
-    margin-bottom: 30px;
-}
-
-.bloc5imagesligne_fieldset {
-    border-radius: 5px;
-    border: 1px solid lightgrey;
-}
-
-.bloc5imagesligne_legend {
-    text-align: left;
-    color: grey;
-    padding: 5px;
-}
-
-.bloc5imagesligne_divimages {
-    height: 100%;
-}
-
-.bloc5imagesligne_img {
-    height: 100%;
-    max-height: 80px;
+    .blocdata_statut {
+        height: 65px;
+        width: 8px;
+        margin-left: 2px;
+    }
+    .blocdata_bouton {
+        display: flex;
+        align-items: center;
+        border-bottom: solid;
+        border-top: 0;
+        padding: 0;
+        cursor: pointer;
+        text-align: left;
+        background-color: transparent;
+        margin-bottom: 0px;
+        border-color: rgba(128, 128, 128, 0.195);
+        border-radius: 0;
+        overflow: hidden;
+    }
+    #fleche{
+        width: 50px;
+        margin-left: 85%;
+        position: fixed;
+        height: 50px;
+    }
+    .blocdata_ligne1 {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .blocdata_ligne2 {
+        color: #6b6b6b;
+        margin-top: 0px;
+        font-size: smaller;
+    }
 }

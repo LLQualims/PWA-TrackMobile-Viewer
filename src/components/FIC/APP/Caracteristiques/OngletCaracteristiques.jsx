@@ -56,7 +56,7 @@ const APPAPFIC_OngletCaracteristiques = (props) => {
                 <CircularProgress />
             ) : (
                     data.map((item) => (
-                        <BlocData ligne1={item.designationCaract} ligne2={item.valeurCaract} />
+                        <BlocData key={item.idappapCaract} ligne1={item.designationCaract} ligne2={item.valeurCaract} />
                 ))
             )}
         </div>

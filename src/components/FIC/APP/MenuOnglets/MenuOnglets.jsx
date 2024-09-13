@@ -42,12 +42,12 @@ const MenuOnglets = (props) => {
         <Header nomimage={"APP_Titre-128-1.png"} urlretour={"/scan"} />
           <Box className="menu-onglets" >
             <Tabs value={value} onChange={handleChange} variant="scrollable"
-              scrollButtons textColor="black" indicatorColor="primary" 
+              scrollButtons color="inherit" indicatorColor="primary" 
               TabIndicatorProps={{style: { height: '3px'}}}
-              sx={{[`& .${tabsClasses.scrollButtons}`]: {display: 'flex',opacity:1,'&.Mui-disabled': { opacity: 0.3 }},
+              sx={{[`& .${tabsClasses.scrollButtons}`]: {display: 'flex',justifyContent:'center',color:'black',opacity:1,'&.Mui-disabled': { opacity: 0.3 }},
                 '.MuiTab-root': {transition: 'none','&:hover': {transition: 'none'},fontSize: '1.2rem',
-                  marginLeft: '10px',marginRight: '10px', textTransform: 'none'}, '.Mui-selected': {
-                  fontWeight: 'bold'} }} >
+                  marginLeft: '5px',marginRight: '5px', textTransform: 'none', color:'black'}, '.Mui-selected': {
+                  fontWeight: 'bold', color:'black'} }} >
 
               <Tab label="Général" />
               <Tab label="Historique" />

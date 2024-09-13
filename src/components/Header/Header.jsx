@@ -15,9 +15,8 @@ const Header = ({ nomimage, urlretour }) => {
         <Box>
             <AppBar id="appbar">
                 <Toolbar id="toolbar">
-                    <IconButton id="iconbtn" aria-label="retour">
-                        <ArrowBackIosNew onClick={() => {
-                            navigate(`${urlretour}`);}} />
+                    <IconButton id="iconbtn" aria-label="retour"  onClick={() => {navigate(`${urlretour}`);}}>
+                        <ArrowBackIosNew/>
                     </IconButton>
                     <img src={require(`../../assets/Images/${nomimage}`)} id="titre" alt="titre" />
                 </Toolbar>

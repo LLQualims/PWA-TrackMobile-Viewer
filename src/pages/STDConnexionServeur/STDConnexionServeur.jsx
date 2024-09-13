@@ -117,7 +117,7 @@ const STDConnexionServeur = () => {
           <form noValidate autoComplete="off" onSubmit={handleSubmit}>
             <Box display="flex" flexDirection="column" alignItems="center">
               <p> Copiez l'adresse du serveur ainsi que le jeton d'identification</p>
-              <TextField style={{ background: 'white', width: '70%' }} onChange={(e) => setServerAddress(e.target.value)} placeholder="https://trackmobile.com" variant="outlined" margin="normal" />
+              <TextField style={{ background: 'white', width: '70%'}} onChange={(e) => setServerAddress(e.target.value)} placeholder="https://trackmobile.com" variant="outlined" margin="normal" />
               <TextField style={{ background: 'white', width: '70%' }} onChange={(e) => setTokenEnter(e.target.value)} placeholder="eyJhbGciOiJIUzI1NiJ9.eyJJZCI6ImI2NGQ5N2RkLTE4YTAtNDJkMi1hZTNkLWViM2Q5ZDRlYTQ5MCIsInN1YklkIjoiNzYiLCJzdWIiOiJLUCIsImp0aSI6IjFkZGEyODRmLTZjZTQtNGRlMC04NDEzLTk1NGI2YWI2YWM0MCIsIlByb2ZpbEVRTSI6IjYiLCJQcm9maWxMQUIiOiIxMCIsIm5iZiI6MTcxOTQ5ODE1OSwiZXhwIjoyMDE5NTAxNzU5LCJpYXQiOjE3MTk0OTgxNTksImlzcyI6IklOT0tZIiwiYXVkIjoiUVVBTElNUyJ9.TaF3QoT2AooxmPD6l_vXWFCnKDguU0pGiaGymo4_6mg" variant="outlined" margin="normal" />
               <Button variant="contained" type="submit" style={{ marginTop: '20px', width: '150px', background: 'white', color: '#00759C', fontWeight: 'bold' }}> Connexion </Button>
               {badUrl && (

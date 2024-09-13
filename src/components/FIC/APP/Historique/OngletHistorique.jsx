@@ -57,20 +57,21 @@ const APPAPFIC_OngletHistorique = (props) => {
       <p className='titreonglet'>LISTE DES OPÉRATIONS</p>
       <div className='headeroperations'>
         <p className='nbresultat'>{nbresult} opérations</p>
-          <FormControlLabel className='selectarchives' value="start" control={<Switch  checked={archives} onChange={(event) => setArchives(event.target.checked)}/>} label="Afficher les archives" labelPlacement="start"/>
+          <FormControlLabel className='selectarchives' value="start" control={<Switch  checked={archives} onChange={(event) => setArchives(event.target.checked)}/>} label="Archives" labelPlacement="start"/>
       </div>
       
           {loading ? (
               <CircularProgress />
           ) : (
               data.map((item) => (
-                  <BlocData
+                  <BlocData key={item.idappOperation}
                     image={getImageOperation(item.idappNatureOperation, item.appNatureOperation.nomImage)}
                     altImage={`Image of ${item.idappNatureOperation}`}
                     ligne1={item.appNatureOperation.designationNatureOperation}
                     ligne2={`${new Date(item.dateOperation).toLocaleDateString()} ${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}
                     couleurStatut={getCouleurWindev(item.appStatut?.couleur)}
                     urlDestination={`/appareils/${props.id}/operations/${item.idappOperation}`}
+                    couleurFleche={'EQM.main'}
                   />
         ))
       )}

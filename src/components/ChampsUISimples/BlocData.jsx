@@ -1,7 +1,8 @@
-﻿import './ChampsUISimples.css';
+﻿import { ArrowRight } from '@mui/icons-material';
+import './ChampsUISimples.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function BlocData({ ligne1, ligne2, image, altImage, urlDestination, couleurStatut }) {
+export default function BlocData({ ligne1, ligne2, image, altImage, urlDestination, couleurStatut, couleurFleche }) {
 
     const navigate = useNavigate();
 
@@ -45,6 +46,7 @@ export default function BlocData({ ligne1, ligne2, image, altImage, urlDestinati
                 <CouleurStatut />
                 <Image />
                 <Texte />
+                <ArrowRight id="fleche" sx={{ color: `${couleurFleche}` }}/>
             </button>
         );
     }
