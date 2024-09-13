@@ -1,5 +1,4 @@
-﻿import './ChampsUISimples.css';
-import TextField from '@mui/material/TextField'
+import './ChampsUISimples.css';
 
 export default function Bloc5ImagesLigne({ titre, image1, image2, image3, image4, image5 }) {
 
