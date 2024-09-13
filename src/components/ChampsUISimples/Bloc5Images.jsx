@@ -13,10 +13,9 @@ export default function Bloc5Images({ titre, image1, image2, image3, image4, ima
         <div className="bloc5images_div">
             <TextField sx={{ innerHeight: 50 }}
                 className="bloc5images_textfield"
-                inputProps={{ readOnly: true }}
+                inputProps={{ readOnly: true, style: { height: 320 } }}
                 label={titre}
-                defaultValue=' '
-                inputProps={{ style: { height: 320 } }} >                
+                defaultValue=' ' >
             </TextField>
 
             <div className="bloc5images_divimages">

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getTraductionWindev } from '../../../../outils/style'
 import './OngletFDS.css'
 import TextFieldReadonly from '../../../ChampsUISimples/TextFieldReadonly';
-import Bloc5Images from '../../../ChampsUISimples/Bloc5Images';
+import Bloc5ImagesLigne from '../../../ChampsUISimples/Bloc5ImagesLigne';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import Erreur from '../../../ChampsUISimples/Erreur';
 
@@ -136,7 +136,7 @@ const LARCOFIC_OngletFDS = (props) => {
     const ImagesDangers = () => {
         if (dataDangers.length > 0) {
             return (
-                <Bloc5Images
+                <Bloc5ImagesLigne
                     titre="Danger"
                     image1={dataDangers[0] && require(`../../../../assets/Images/STD_${dataDangers[0].codeDanger}-128-1.png`)}
                     image2={dataDangers[1] && require(`../../../../assets/Images/STD_${dataDangers[1].codeDanger}-128-1.png`)}
@@ -145,13 +145,13 @@ const LARCOFIC_OngletFDS = (props) => {
                     image5={dataDangers[4] && require(`../../../../assets/Images/STD_${dataDangers[4].codeDanger}-128-1.png`)} />
             )
         }
-        return <Bloc5Images titre="Danger" image3={require(`../../../../assets/Images/STD_SPEVI-48-1.png`)}/>
+        return <Bloc5ImagesLigne titre="Danger" image3={require(`../../../../assets/Images/STD_SPEVI-48-1.png`)}/>
     }
 
     const ImagesEPI = () => {
         if (dataEPI.length > 0) {
             return (
-                <Bloc5Images
+                <Bloc5ImagesLigne
                     titre="EPI"
                     image1={dataEPI[0] && require(`../../../../assets/Images/STD_EPI${dataEPI[0].codeEPI}-64-1.png`)}
                     image2={dataEPI[1] && require(`../../../../assets/Images/STD_EPI${dataEPI[1].codeEPI}-64-1.png`)}
@@ -160,7 +160,7 @@ const LARCOFIC_OngletFDS = (props) => {
                     image5={dataEPI[4] && require(`../../../../assets/Images/STD_EPI${dataEPI[4].codeEPI}-64-1.png`)} />
             )
         }
-        return <Bloc5Images titre="EPI" image3={require(`../../../../assets/Images/STD_SPEVI-48-1.png`)} />
+        return <Bloc5ImagesLigne titre="EPI" image3={require(`../../../../assets/Images/STD_SPEVI-48-1.png`)} />
     }
 
     return (

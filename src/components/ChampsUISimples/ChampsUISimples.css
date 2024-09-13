@@ -127,3 +127,30 @@
     height: 100%;
     position: absolute;
 }
+
+/* Bloc5ImagesLigne */
+.bloc5imagesligne_div {
+    width: 80%;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.bloc5imagesligne_fieldset {
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+.bloc5imagesligne_legend {
+    text-align: left;
+    color: grey;
+    padding: 5px;
+}
+
+.bloc5imagesligne_divimages {
+    height: 100%;
+}
+
+.bloc5imagesligne_img {
+    height: 100%;
+    max-height: 80px;
+}
