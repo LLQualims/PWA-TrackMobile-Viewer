@@ -181,7 +181,7 @@ const LARCOFIC_OngletFDS = (props) => {
                         <p className="titre_section">CODE DE RISQUE</p>
 
                         <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <Table aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
                                         <TableCell style={{ fontWeight: 1000 }}>Code</TableCell>
@@ -202,7 +202,7 @@ const LARCOFIC_OngletFDS = (props) => {
                         <p className="titre_section">CODE DE DANGER</p>
 
                         <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <Table aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
                                         <TableCell style={{ fontWeight:1000 }}>Code</TableCell>

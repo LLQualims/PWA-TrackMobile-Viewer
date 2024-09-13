@@ -77,6 +77,7 @@ const LARCOFIC_OngletHistorique = (props) => {
                         ligne2={`${new Date(item.dateOperation).toLocaleDateString()} ${item.heureOperation.slice(0, 2)}:${item.heureOperation.slice(2, 4)}:${item.heureOperation.slice(4, 6)}`}
                         couleurStatut={getCouleurWindev(item.larStatutCO?.couleur)}
                         urlDestination={`/conditionnements/${props.id}/operations/${item.idlarOperationCO}`}
+                        couleurFleche={ 'LABSTOCK.main' }
                     />
                 ))
             )}
