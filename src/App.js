@@ -13,8 +13,8 @@ import STDERREUR from './pages/ERREUR/STDERREUR';
 // APP
 import APPAPFIC from './pages/APPAPFIC/APPAPFIC';
 import APPOPFIC from './pages/APPOPFIC/APPOPFIC';
-
-//LAR
+// LAR
+import LARCOFIC from './pages/LARCOFIC/LARCOFIC';
 import LAROPFIC from './pages/LAROPFIC/LAROPFIC';
 
 // Components
@@ -40,6 +40,7 @@ function App() {
                 <Route path="/appareils/:idappAppareil/operations/:idappOperation" element={<ProtectedRoute><APPOPFIC /></ProtectedRoute>} />
                 <Route path="/conditionnements/:idlarConditionnement/operations/:idlarOperationCO" element={<ProtectedRoute><LAROPFIC /></ProtectedRoute>} />
                 <Route path="*" element={<ProtectedRoute><STDERREUR/></ProtectedRoute>} />
+                <Route path="/conditionnements/:idlarConditionnement" element={<ProtectedRoute><LARCOFIC /></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     </ThemeProvider>  

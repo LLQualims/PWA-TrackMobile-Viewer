@@ -49,6 +49,7 @@ const STDSCAN = () => {
     event.preventDefault();
     setLoading(true);
     localStorage.removeItem('activeTabAPPAPFIC');
+    localStorage.removeItem('activeTabLARCOFIC')
     try{
       VerifNumAppareil();
       VerifIDAppareil();
