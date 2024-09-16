@@ -3,7 +3,7 @@ import axios from 'axios';
 import TextFieldReadonly from '../../../ChampsUISimples/TextFieldReadonly';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import Erreur from '../../../ChampsUISimples/Erreur';
-import './OngletGeneral.css'
+import '../../OngletGeneral.css';
 
 const APPAPFIC_OngletGeneral = (props) => {
   const [data, setData] = useState([]);

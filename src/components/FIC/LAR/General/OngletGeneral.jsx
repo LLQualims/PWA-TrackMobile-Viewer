@@ -3,7 +3,7 @@ import axios from 'axios';
 import TextFieldReadonly from '../../../ChampsUISimples/TextFieldReadonly';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import Erreur from '../../../ChampsUISimples/Erreur';
-import '../../OngletGeneral.css';
+import '../../../FIC/OngletGeneral.css';
 
 const LARCOFIC_OngletGeneral = (props) => {
     const [data, setData] = useState([]);
@@ -66,7 +66,7 @@ const LARCOFIC_OngletGeneral = (props) => {
             {loading ? (
                 <CircularProgress />
             ) : (
-                <div className='infosgeneral'>
+                <div id='infos'>
                     <div id="statut">
                         <img id="img_statut_fond" src={require(`../../../../assets/Images/STD_Statut${data.larStatutCO.statutConditionnement}-128-1.png`)} alt="Statut" />
                         <img id="img_statut_etat" className="superpose" src={require(`../../../../assets/Images/LARCO_etat${data.envConditionnement.typeConditionnement}${data.larEtatCO.idlarEtatCO}-72-1.png`)} />
