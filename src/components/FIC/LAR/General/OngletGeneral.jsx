@@ -3,7 +3,7 @@ import axios from 'axios';
 import TextFieldReadonly from '../../../ChampsUISimples/TextFieldReadonly';
 import CircularProgress from '../../../ChampsUISimples/CircularProgress';
 import Erreur from '../../../ChampsUISimples/Erreur';
-import './OngletGeneral.css'
+import '../../OngletGeneral.css';
 
 const LARCOFIC_OngletGeneral = (props) => {
     const [data, setData] = useState([]);
@@ -74,21 +74,21 @@ const LARCOFIC_OngletGeneral = (props) => {
                     </div>
 
                     <div>
-                        <TextFieldReadonly libelle="Article" valeur={data.larArticle ? data.larArticle.designationArticle : ""} />
-                        <TextFieldReadonly libelle="N° cond" valeur={data.numConditionnement} />
-                        <TextFieldReadonly libelle="Quantité initiale" valeur={data.envUniteStockage ? `${data.quantiteConditionnement / data.envUniteStockage.tauxConversion} ${data.envUniteStockage.designationUnite}` : ''} />
-                        <TextFieldReadonly libelle="Quantité restante" valeur={data.envUniteStockage ? `${data.quantiteRestante / data.envUniteStockage.tauxConversion} ${data.envUniteStockage.designationUnite}` : ''} />
-                        <TextFieldReadonly libelle="Reçu le" valeur={data.dateReception ? new Date(data.dateReception).toLocaleDateString() : 'N/A'} />
-                        <TextFieldReadonly libelle="Ouvert le" valeur={data.dateOuverture ? new Date(data.dateOuverture).toLocaleDateString() : 'N/A'} />
-                        <TextFieldReadonly libelle="Périmé le" valeur={data.datePeremptionConditionnement ? new Date(data.datePeremptionConditionnement).toLocaleDateString() : 'N/A'} />
-                        <TextFieldReadonly libelle="Type conditionnement" valeur={data.envConditionnement ? data.envConditionnement.designationConditionnement : ''} />
+                        <TextFieldReadonly libelle="ARTICLE" valeur={data.larArticle ? data.larArticle.designationArticle : ""} />
+                        <TextFieldReadonly libelle="N° COND." valeur={data.numConditionnement} />
+                        <TextFieldReadonly libelle="QTE INITIALE" valeur={data.envUniteStockage ? `${data.quantiteConditionnement / data.envUniteStockage.tauxConversion} ${data.envUniteStockage.designationUnite}` : ''} />
+                        <TextFieldReadonly libelle="QTE RESTANTE" valeur={data.envUniteStockage ? `${data.quantiteRestante / data.envUniteStockage.tauxConversion} ${data.envUniteStockage.designationUnite}` : ''} />
+                        <TextFieldReadonly libelle="REÇU LE" valeur={data.dateReception ? new Date(data.dateReception).toLocaleDateString() : 'N/A'} />
+                        <TextFieldReadonly libelle="OUVERT LE" valeur={data.dateOuverture ? new Date(data.dateOuverture).toLocaleDateString() : 'N/A'} />
+                        <TextFieldReadonly libelle="PÉRIMÉ LE" valeur={data.datePeremptionConditionnement ? new Date(data.datePeremptionConditionnement).toLocaleDateString() : 'N/A'} />
+                        <TextFieldReadonly libelle="TYPE COND." valeur={data.envConditionnement ? data.envConditionnement.designationConditionnement : ''} />
                         <TextFieldReadonly libelle="N° CAS" valeur={data.larArticle ? data.larArticle.numCAS : 'N/A'} />
-                        <TextFieldReadonly libelle="Rangement" valeur={`${data.labRangement ? data.labRangement.codeRangement : ''}${data.labSousRangement ? ` - ${data.labSousRangement.codeSousRangement}` : ''}`} />
-                        <TextFieldReadonly libelle="Salle" valeur={salle} />
-                        <TextFieldReadonly libelle="Fournisseur" valeur={data.extTiers ? data.extTiers.designationTiers : ''} />
-                        <TextFieldReadonly libelle="Référence" valeur={data.reference} />
-                        <TextFieldReadonly libelle="N° lot" valeur={data.larLot ? data.larLot.numeroLot : ""} />
-                        <TextFieldReadonly libelle="Lot périmé le" valeur={(data.larLot && data.larLot.datePeremption) ? new Date(data.larLot.datePeremption).toLocaleDateString() : 'N/A'} />
+                        <TextFieldReadonly libelle="RANGEMENT" valeur={`${data.labRangement ? data.labRangement.codeRangement : ''}${data.labSousRangement ? ` - ${data.labSousRangement.codeSousRangement}` : ''}`} />
+                        <TextFieldReadonly libelle="SALLE" valeur={salle} />
+                        <TextFieldReadonly libelle="FOURNISSEUR" valeur={data.extTiers ? data.extTiers.designationTiers : ''} />
+                        <TextFieldReadonly libelle="RÉFÉRENCE" valeur={data.reference} />
+                        <TextFieldReadonly libelle="N° LOT" valeur={data.larLot ? data.larLot.numeroLot : ""} />
+                        <TextFieldReadonly libelle="LOT PÉRIMÉ LE" valeur={(data.larLot && data.larLot.datePeremption) ? new Date(data.larLot.datePeremption).toLocaleDateString() : 'N/A'} />
                     </div>
                 </div>
             )}
