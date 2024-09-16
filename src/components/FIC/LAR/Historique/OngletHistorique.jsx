@@ -63,7 +63,7 @@ const LARCOFIC_OngletHistorique = (props) => {
             <p className='titreonglet'>LISTE DES OPÉRATIONS</p>
             <div className='headeroperations'>
                 <p className='nbresultat'>{nbresult} opérations</p>
-                <FormControlLabel className='selectarchives' value="start" control={<Switch checked={archives} onChange={(event) => setArchives(event.target.checked)} />} label="Afficher les archives" labelPlacement="start" />
+                <FormControlLabel className='selectarchives' value="start" control={<Switch checked={archives} onChange={(event) => setArchives(event.target.checked)} />} label="Archives" labelPlacement="start" />
             </div>
 
             {loading ? (

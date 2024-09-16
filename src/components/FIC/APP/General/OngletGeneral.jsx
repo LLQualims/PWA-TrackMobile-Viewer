@@ -41,7 +41,7 @@ const APPAPFIC_OngletGeneral = (props) => {
 
   return (
     <div className='tab'>
-      <p className='titreonglet'>INFORMATIONS SUR L'APPAREIL</p>
+      <p className='titreonglet'>INFORMATIONS GÉNÉRALES</p>
         
         {loading ? (
                 <CircularProgress />

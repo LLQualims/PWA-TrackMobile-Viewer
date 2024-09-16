@@ -61,7 +61,7 @@ const LARCOFIC_OngletGeneral = (props) => {
 
     return (
         <div className='tab'>
-            <p className='titreonglet'>INFORMATIONS SUR LE CONDITIONNEMENT</p>
+            <p className='titreonglet'>INFORMATIONS GÉNÉRALES</p>
 
             {loading ? (
                 <CircularProgress />
