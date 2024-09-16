@@ -1,7 +1,4 @@
-﻿.infosgeneral {
-    
-}
-
+﻿
 .titre_section {
     background-color: lightblue;
     text-align: left;
@@ -10,4 +7,9 @@
 }
 .infosgeneral {
     width: 75%;
+}
+
+#tableaux-fds{
+    margin-left: 10%;
+    margin-right: 10%;
 }

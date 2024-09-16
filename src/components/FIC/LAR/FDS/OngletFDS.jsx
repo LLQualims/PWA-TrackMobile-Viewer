@@ -145,7 +145,7 @@ const LARCOFIC_OngletFDS = (props) => {
                     image5={dataDangers[4] && require(`../../../../assets/Images/STD_${dataDangers[4].codeDanger}-128-1.png`)} />
             )
         }
-        return <Bloc5ImagesLigne titre="Danger" image3={require(`../../../../assets/Images/STD_SPEVI-48-1.png`)}/>
+        return <Bloc5ImagesLigne titre="Danger" image3={require(`../../../../assets/Images/STD_SPEVI-48-1.png`)} />
     }
 
     const ImagesEPI = () => {
@@ -170,14 +170,15 @@ const LARCOFIC_OngletFDS = (props) => {
             {loading ? (
                 <CircularProgress />
             ) : (
-                    <div className='infosgeneral'>
-                        <TextFieldReadonly libelle="Article" valeur={dataArticle.larArticle ? dataArticle.larArticle.designationArticle : ""} />
+                <div className='infos'>
+                    <TextFieldReadonly libelle="ARTICLE" valeur={dataArticle.larArticle ? dataArticle.larArticle.designationArticle : ""} />
 
-                        <div id="div_dangers">
-                            <ImagesDangers />
-                            <ImagesEPI />
-                        </div>
+                    <div id="div_dangers">
+                        <ImagesDangers />
+                        <ImagesEPI />
+                    </div>
 
+                    <div id='tableaux-fds'>
                         <p className="titre_section">CODE DE RISQUE</p>
 
                         <TableContainer component={Paper}>
@@ -205,7 +206,7 @@ const LARCOFIC_OngletFDS = (props) => {
                             <Table aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell style={{ fontWeight:1000 }}>Code</TableCell>
+                                        <TableCell style={{ fontWeight: 1000 }}>Code</TableCell>
                                         <TableCell style={{ fontWeight: 1000 }}>Mention</TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -221,6 +222,8 @@ const LARCOFIC_OngletFDS = (props) => {
                         </TableContainer>
 
                     </div>
+
+                </div>
             )}
         </div>
     );

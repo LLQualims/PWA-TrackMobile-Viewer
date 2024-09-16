@@ -46,7 +46,7 @@ const APPAPFIC_OngletGeneral = (props) => {
         {loading ? (
                 <CircularProgress />
             ) : (
-            <div id='infos'>
+            <div className='infos'>
                 <div id="statut">
                     <img id="img_statut_fond" src={require(`../../../../assets/Images/STD_Statut${data.idappStatut}-128-1.png`)} alt="Statut" />
                     <img id="img_statut_etat" className="superpose" src={require(`../../../../assets/Images/APP_Etat7-72-1.png`)} />
