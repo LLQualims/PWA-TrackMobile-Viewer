@@ -46,7 +46,7 @@ const APPAPFIC_OngletGeneral = (props) => {
         {loading ? (
                 <CircularProgress />
             ) : (
-            <div className='infosgeneral'>
+            <div id='infos'>
                 <div id="statut">
                     <img id="img_statut_fond" src={require(`../../../../assets/Images/STD_Statut${data.idappStatut}-128-1.png`)} alt="Statut" />
                     <img id="img_statut_etat" className="superpose" src={require(`../../../../assets/Images/APP_Etat7-72-1.png`)} />
@@ -54,19 +54,20 @@ const APPAPFIC_OngletGeneral = (props) => {
                 </div>
 
                 <div>
-                    <TextFieldReadonly libelle="Famille" valeur={data.appFamille ? data.appFamille.designationFamille : ""} />
-                    <TextFieldReadonly libelle="Numéro Appareil" valeur={data.numeroAppareil} />
-                    <TextFieldReadonly libelle="Désignation Appareil" valeur={data.designationAppareil} />
-                    <TextFieldReadonly libelle="Responsable" valeur={data.responsable ? data.responsable.prenomPersonnel + " " + data.responsable.nomPersonnel : ""} />
-                    <TextFieldReadonly libelle="Localisation" valeur={data.envSalle ? data.envSalle.numeroSalle + " " + data.envSalle.designationSalle : ""} />
-                    <TextFieldReadonly libelle="Prochaine Opération" valeur={data.dateFutureOperation ? new Date(data.dateFutureOperation).toLocaleDateString() : 'N/A'} />
-                    <TextFieldReadonly libelle="Type" valeur={data.appType ? data.appType.designationType : ""} />
-                    <TextFieldReadonly libelle="Date Acquisition" valeur={data.dateAcquisition ? new Date(data.dateAcquisition).toLocaleDateString() : 'N/A'} />
-                    <TextFieldReadonly libelle="Date Mise En Service" valeur={data.dateMiseEnService ? new Date(data.dateMiseEnService).toLocaleDateString() : 'N/A'} />
-                    <TextFieldReadonly libelle="Marque Appareil" valeur={data.marqueAppareil} />
-                    <TextFieldReadonly libelle="Numéro Série" valeur={data.numeroSerie} />
-                    <TextFieldReadonly libelle="Info Étiquette" valeur={data.infoEtiquette} />
-                    <TextFieldReadonly libelle="Remarque" valeur={data.remarqueHTML} />
+                    <TextFieldReadonly libelle="FAMILLE" multiline valeur={data.appFamille ? data.appFamille.designationFamille : ""} />
+                    <TextFieldReadonly libelle="N° INTERNE" multiline valeur={data.numeroAppareil} />
+                    <TextFieldReadonly libelle="DÉSIGNATION" multiline valeur={data.designationAppareil} />
+                    <TextFieldReadonly libelle="RESPONSABLE" multiline valeur={data.responsable ? data.responsable.prenomPersonnel + " " + data.responsable.nomPersonnel : ""} />
+                    <TextFieldReadonly libelle="LOCALISATION" multiline valeur={data.envSalle ? data.envSalle.numeroSalle + " " + data.envSalle.designationSalle : ""} />
+                    <TextFieldReadonly libelle="PROCHAINE OPÉRATION" multiline valeur={data.dateFutureOperation ? new Date(data.dateFutureOperation).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="TYPE" multiline valeur={data.appType ? data.appType.designationType : ""} />
+                    <TextFieldReadonly libelle="ACQUISITION" multiline valeur={data.dateAcquisition ? new Date(data.dateAcquisition).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="MISE EN SERVICE" multiline valeur={data.dateMiseEnService ? new Date(data.dateMiseEnService).toLocaleDateString() : 'N/A'} />
+                    <TextFieldReadonly libelle="MARQUE" multiline valeur={data.marqueAppareil} />
+                    <TextFieldReadonly libelle="N° SÉRIE" multiline valeur={data.numeroSerie} />
+                    <TextFieldReadonly libelle="INFO ÉTIQUETTE" multiline valeur={data.infoEtiquette} />
+                    <p>REMARQUE</p>
+                    <div dangerouslySetInnerHTML={{ __html: data.remarqueHTML }} />
                 </div>
             </div>
         )}

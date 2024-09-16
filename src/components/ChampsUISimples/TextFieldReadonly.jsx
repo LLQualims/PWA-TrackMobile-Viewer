@@ -17,7 +17,8 @@ export default function TextFieldReadonly({ libelle, valeur }) {
                     // change label and border color when readonly
                     "&:has([readonly]) ": {
                         "& .MuiInputLabel-outlined": {
-                            color: "#cecece",
+                            color: "black",
+                            fontWeight: 'bold',
                         },
                         "& .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#cecece",

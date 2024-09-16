@@ -10,6 +10,13 @@
     position: absolute;
 }
 
+#date{
+    display: flex;
+    width: 100%;
+    justify-content: center; 
+    margin: 0;
+}
+
 #img_statut_fond {
     z-index: 10;
     width:100%
@@ -40,19 +47,19 @@
 
     font-weight: bold;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
 }
 
-.infosgeneral{
-    width: 95%;
+#infos{
+    width: 100%;
 }
+
 
 @media screen and (max-width: 1024px) {
     #statut {
         max-width: 85%;
     }
     #txt_statut_texte {
-        
         top:15%;
     }
   }

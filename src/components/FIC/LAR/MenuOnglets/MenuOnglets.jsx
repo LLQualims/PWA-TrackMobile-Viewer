@@ -45,15 +45,10 @@ const MenuOnglets = (props) => {
                     <Tabs value={value} onChange={handleChange} variant="scrollable"
                         scrollButtons textColor="black" indicatorColor="primary"
                         TabIndicatorProps={{ style: { height: '3px' } }}
-                        sx={{
-                            [`& .${tabsClasses.scrollButtons}`]: { display: 'flex', opacity: 1, '&.Mui-disabled': { opacity: 0.3 } },
-                            '.MuiTab-root': {
-                                transition: 'none', '&:hover': { transition: 'none' }, fontSize: '1.2rem',
-                                marginLeft: '10px', marginRight: '10px', textTransform: 'none'
-                            }, '.Mui-selected': {
-                                fontWeight: 'bold'
-                            }
-                        }} >
+                        sx={{[`& .${tabsClasses.scrollButtons}`]: {display: 'flex',justifyContent:'center',opacity:1,'&.Mui-disabled': { opacity: 0.3 }},
+                '.MuiTab-root': {transition: 'none','&:hover': {transition: 'none'},fontSize: '1.2rem',
+                  marginLeft: '5px',marginRight: '5px', textTransform: 'none'}, '.Mui-selected': {
+                  fontWeight: 'bold', color:'black'} }} >
 
                         <Tab label="Général" />
                         <Tab label="Historique" />
