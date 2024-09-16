@@ -42,7 +42,7 @@ const MenuOnglets = (props) => {
         <Header nomimage={"APP_Titre-128-1.png"} urlretour={"/scan"} />
           <Box className="menu-onglets" >
             <Tabs value={value} onChange={handleChange} variant="scrollable"
-              scrollButtons color="inherit" indicatorColor="primary" 
+              scrollButtons textcolor="black" indicatorColor="primary" 
               TabIndicatorProps={{style: { height: '3px'}}}
               sx={{[`& .${tabsClasses.scrollButtons}`]: {display: 'flex',justifyContent:'center',opacity:1,'&.Mui-disabled': { opacity: 0.3 }},
                 '.MuiTab-root': {transition: 'none','&:hover': {transition: 'none'},fontSize: '1.2rem',

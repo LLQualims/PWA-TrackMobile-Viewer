@@ -57,20 +57,13 @@ const MenuOnglets = (props) => {
                     </Tabs>
                 </Box>
             </div>
-            <SwipeableViews index={value} onChangeIndex={handleSwipeChange} enableMouseEvents>
-                <div className='contenu-onglet'>
-                    <LARCOFIC_OngletGeneral id={props.idlarConditionnement} />
-                </div>
-                <div className='contenu-onglet'>
-                    <LARCOFIC_OngletHistorique id={props.idlarConditionnement} />
-                </div>
-                <div className='contenu-onglet'>
-                    <LARCOFIC_OngletFDS id={props.idlarConditionnement} />
-                </div>
-                <div className='contenu-onglet'>
-                    <LARCOFIC_OngletCaracteristiques id={props.idlarConditionnement} />
-                </div>
-            </SwipeableViews>
+            <div className='contenu-onglet'>
+                {value === 0 && <LARCOFIC_OngletGeneral id={props.idlarConditionnement} />}
+                {value === 1 && <LARCOFIC_OngletHistorique id={props.idlarConditionnement} />}
+                {value === 2 && <LARCOFIC_OngletFDS id={props.idlarConditionnement} />}
+                {value === 3 && <LARCOFIC_OngletCaracteristiques id={props.idlarConditionnement} />}
+            </div>
+
         </div>
     )
 };
