@@ -22,6 +22,8 @@ const LARCOFIC_OngletFDS = (props) => {
     const [dataEPI, setDataEPI] = useState([]);
     const [dataRisques, setDataRisques] = useState([]);
     const [dataSecurites, setDataSecurites] = useState([]);
+    const [dataContenuFDS, setDataContenuFDS] = useState("");
+    const [modeConsultationFDS, setModeConsultationFDS] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     let idLarArticle;
@@ -37,6 +39,7 @@ const LARCOFIC_OngletFDS = (props) => {
             if (response.data.contenu && typeof response.data.contenu === 'object') {
                 setDataArticle(response.data.contenu);
                 idLarArticle = response.data.contenu.idlarArticle;
+                rechercheContenuFDS();
                 rechercheDangers();
                 rechercheEPI();
                 rechercheRisques();
@@ -125,6 +128,21 @@ const LARCOFIC_OngletFDS = (props) => {
         }
     }
 
+    const rechercheContenuFDS = async () => {
+        try {
+            const response = await axios.get(`${localStorage.getItem("URLServeur")}/lar/article/${idLarArticle}/fds`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('Token')}`                }
+            });
+
+            if (response.data.contenu !== '') {
+                setDataContenuFDS(response.data.contenu);
+            }
+        } catch (err) {
+            
+        }
+    }
+
     useEffect(() => {
         rechercheArticle();
     }, []);
@@ -170,57 +188,69 @@ const LARCOFIC_OngletFDS = (props) => {
             {loading ? (
                 <CircularProgress />
             ) : (
-                    <div className='infosgeneral'>
-                        <TextFieldReadonly libelle="Article" valeur={dataArticle.larArticle ? dataArticle.larArticle.designationArticle : ""} />
+                    modeConsultationFDS ? (
+                        <>
+                            <div className='infosgeneral'>
+                                {(dataContenuFDS !== '' && <img src={require(`../../../../assets/Images/STD_croix-48-5.png`)} onClick={() => setModeConsultationFDS(!modeConsultationFDS)} className="bouton_fds" alt='Fermer FDS' />)}
+                            </div>
+                            <embed className="pdf" src={`data:application/pdf;base64,${dataContenuFDS}`} />
+                        </>
+                    ) : (
 
-                        <div id="div_dangers">
-                            <ImagesDangers />
-                            <ImagesEPI />
+                        <div className='infosgeneral'>
+
+                            {(dataContenuFDS !== '' && <img src={require(`../../../../assets/Images/LAR_FDS-48-5.png`)} onClick={() => setModeConsultationFDS(!modeConsultationFDS)} className="bouton_fds" alt='FDS' />)}
+                            <TextFieldReadonly libelle="Article" valeur={dataArticle.larArticle ? dataArticle.larArticle.designationArticle : ""} />
+
+                            <div id="div_dangers">
+                                <ImagesDangers />
+                                <ImagesEPI />
+                            </div>
+
+                            <p className="titre_section">CODE DE RISQUE</p>
+
+                            <TableContainer component={Paper}>
+                                <Table aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell style={{ fontWeight: 1000 }}>Code</TableCell>
+                                            <TableCell style={{ fontWeight: 1000 }}>Mention</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {dataRisques.map((risque) => (
+                                            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                                                <TableCell component="th" scope="row">{risque.stdRisque.codeRisque} </TableCell>
+                                                <TableCell>{getTraductionWindev(risque.stdRisque.mentionTraduction)}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+
+                            <p className="titre_section">CODE DE DANGER</p>
+
+                            <TableContainer component={Paper}>
+                                <Table aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell style={{ fontWeight:1000 }}>Code</TableCell>
+                                            <TableCell style={{ fontWeight: 1000 }}>Mention</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {dataSecurites.map((securite) => (
+                                            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                                                <TableCell component="th" scope="row">{securite.stdSecurite.codeSecurite} </TableCell>
+                                                <TableCell>{getTraductionWindev(securite.stdSecurite.mentionTraduction)}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+
                         </div>
-
-                        <p className="titre_section">CODE DE RISQUE</p>
-
-                        <TableContainer component={Paper}>
-                            <Table aria-label="simple table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell style={{ fontWeight: 1000 }}>Code</TableCell>
-                                        <TableCell style={{ fontWeight: 1000 }}>Mention</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {dataRisques.map((risque) => (
-                                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                                            <TableCell component="th" scope="row">{risque.stdRisque.codeRisque} </TableCell>
-                                            <TableCell>{getTraductionWindev(risque.stdRisque.mentionTraduction)}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-
-                        <p className="titre_section">CODE DE DANGER</p>
-
-                        <TableContainer component={Paper}>
-                            <Table aria-label="simple table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell style={{ fontWeight:1000 }}>Code</TableCell>
-                                        <TableCell style={{ fontWeight: 1000 }}>Mention</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {dataSecurites.map((securite) => (
-                                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                                            <TableCell component="th" scope="row">{securite.stdSecurite.codeSecurite} </TableCell>
-                                            <TableCell>{getTraductionWindev(securite.stdSecurite.mentionTraduction)}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-
-                    </div>
+                )
             )}
         </div>
     );
