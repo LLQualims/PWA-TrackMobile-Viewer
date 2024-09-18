@@ -1,5 +1,11 @@
-﻿.infosgeneral {
-    
+﻿.tab {
+    height: 100%;
+    min-height: 100vh;
+}
+
+.pdf {
+    width: 100%;
+    min-height: 100vh;
 }
 
 .titre_section {
@@ -10,4 +16,8 @@
 }
 .infosgeneral {
     width: 75%;
+}
+
+.bouton_fds {
+    float: right;
 }
