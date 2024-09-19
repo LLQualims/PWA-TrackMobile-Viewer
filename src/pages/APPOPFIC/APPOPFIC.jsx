@@ -8,6 +8,7 @@ import TextFieldReadonly from '../../components/ChampsUISimples/TextFieldReadonl
 import Erreur from '../../components/ChampsUISimples/Erreur';
 import { CircularProgress } from '@mui/material';
 import {getImageOperation} from '../../outils/Image';
+import HTMLInput from '../../components/ChampsUISimples/ChampHTML';
 
 export default function APPOPFIC() {
 
@@ -67,12 +68,13 @@ console.log(dataOperation);
                     </div>
 
                     <div>
-                        <TextFieldReadonly libelle="Appareil Concerné" valeur={`${dataOperation.appAppareil.numeroAppareil} ${dataOperation.appAppareil.designationAppareil}`} />
-                        <TextFieldReadonly libelle="Date" valeur={dataOperation.dateOperation ? new Date(dataOperation.dateOperation).toLocaleDateString() : 'N/A'} />
-                        <TextFieldReadonly libelle="Heure" valeur={`${dataOperation.heureOperation.slice(0, 2)}:${dataOperation.heureOperation.slice(2, 4)}:${dataOperation.heureOperation.slice(4, 6)}`} />
-                        <TextFieldReadonly libelle="Intervenant" valeur={dataOperation.nomIntervenant} />
-                        <TextFieldReadonly libelle="Remarque" valeur={dataOperation.remarqueAChaudHTML} />
-                        <div dangerouslySetInnerHTML={{ __html: dataOperation.remarqueAChaudHTML }} />
+                        <TextFieldReadonly libelle="APPAREIL CONCERNÉ" valeur={`${dataOperation.appAppareil.numeroAppareil} ${dataOperation.appAppareil.designationAppareil}`} />
+                        <TextFieldReadonly libelle="DATE" valeur={dataOperation.dateOperation ? new Date(dataOperation.dateOperation).toLocaleDateString() : 'N/A'} />
+                        <TextFieldReadonly libelle="HEURE" valeur={`${dataOperation.heureOperation.slice(0, 2)}:${dataOperation.heureOperation.slice(2, 4)}:${dataOperation.heureOperation.slice(4, 6)}`} />
+                        <TextFieldReadonly libelle="INTERVENANT" valeur={dataOperation.nomIntervenant} />
+                        <p>Remarque</p>
+                        <HTMLInput libelle="Remarque" valeur={dataOperation.remarqueAChaudHTML}/>
+                        
                     </div>
                 </div>
             )}
